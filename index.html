@@ -17,7 +17,7 @@ html,body{
   width:100%;
   height:100%;
   overflow:hidden;
-  background:#01030a;
+  background:#000;
   font-family:Arial,sans-serif;
 }
 
@@ -29,57 +29,12 @@ html,body{
 
   background:
     radial-gradient(
-      circle at 50% 50%,
-      #18295d 0%,
-      #080e2b 35%,
-      #02040d 72%,
+      ellipse at center,
+      #142451 0%,
+      #080d20 40%,
+      #02030a 75%,
       #000 100%
     );
-}
-
-
-/* =========================
-   TITLE
-========================= */
-
-.title{
-  position:absolute;
-  top:22px;
-  width:100%;
-
-  text-align:center;
-
-  color:#fff;
-
-  font-size:
-    clamp(24px,4vw,42px);
-
-  font-weight:900;
-
-  letter-spacing:7px;
-
-  text-shadow:
-    0 0 12px #65a9ff,
-    0 0 35px #3679ff,
-    0 0 70px #1c45bd;
-
-  z-index:100;
-}
-
-.subtitle{
-  position:absolute;
-  top:70px;
-  width:100%;
-
-  text-align:center;
-
-  color:#91adff;
-
-  font-size:12px;
-
-  letter-spacing:5px;
-
-  z-index:100;
 }
 
 
@@ -89,12 +44,9 @@ html,body{
 
 .star{
   position:absolute;
-
-  background:white;
-
+  background:#fff;
   border-radius:50%;
-
-  pointer-events:none;
+  z-index:1;
 }
 
 
@@ -103,41 +55,31 @@ html,body{
 ========================= */
 
 .earth{
-
   position:absolute;
 
-  width:250px;
-  height:250px;
+  width:260px;
+  height:260px;
 
   left:50%;
   top:50%;
 
-  transform:
-    translate(-50%,-50%);
+  transform:translate(-50%,-50%);
 
   border-radius:50%;
 
   background:
-
     radial-gradient(
-      circle at 30% 25%,
-      #c5f1ff 0%,
-      #65a9ee 18%,
-      #2864c5 40%,
-      #102f7d 65%,
-      #03091f 90%
+      circle at 35% 30%,
+      #b9efff,
+      #4b9be8 25%,
+      #1e55ae 50%,
+      #081a4a 75%,
+      #01030c 100%
     );
 
   box-shadow:
-
-    0 0 35px
-    rgba(80,160,255,.8),
-
-    0 0 100px
-    rgba(50,110,255,.4),
-
-    0 0 180px
-    rgba(30,70,255,.2);
+    0 0 40px rgba(70,150,255,.8),
+    0 0 100px rgba(50,100,255,.35);
 
   z-index:2;
 }
@@ -148,14 +90,10 @@ html,body{
 ========================= */
 
 .orbit{
-
   position:absolute;
 
   width:90vw;
-  height:43vw;
-
-  max-width:1400px;
-  max-height:650px;
+  height:45vw;
 
   left:50%;
   top:50%;
@@ -166,35 +104,71 @@ html,body{
 
   border:
     1px solid
-    rgba(110,180,255,.2);
+    rgba(100,170,255,.2);
 
   border-radius:50%;
-
-  box-shadow:
-    0 0 40px
-    rgba(80,140,255,.08);
 
   z-index:1;
 }
 
 
 /* =========================
-   SPACECRAFT AREA
+   TITLE
 ========================= */
 
-#ships{
-
+.title{
   position:absolute;
 
-  inset:0;
+  top:22px;
 
-  z-index:30;
+  width:100%;
+
+  text-align:center;
+
+  color:#fff;
+
+  font-size:
+    clamp(22px,4vw,40px);
+
+  font-weight:bold;
+
+  letter-spacing:6px;
+
+  text-shadow:
+    0 0 15px #4d9cff,
+    0 0 35px #2360db;
+
+  z-index:100;
+}
+
+.subtitle{
+  position:absolute;
+
+  top:68px;
+
+  width:100%;
+
+  text-align:center;
+
+  color:#91adff;
+
+  font-size:12px;
+
+  letter-spacing:4px;
+
+  z-index:100;
 }
 
 
 /* =========================
    SPACECRAFT
 ========================= */
+
+#ships{
+  position:absolute;
+  inset:0;
+  z-index:20;
+}
 
 .ship{
 
@@ -204,207 +178,157 @@ html,body{
   height:360px;
 
   animation:
-    cruise
-    var(--duration)
+    fly
+    var(--speed)
     linear
     infinite;
 
-  transform-style:preserve-3d;
-
   filter:
     drop-shadow(
-      0 0 20px
-      rgba(60,160,255,.8)
+      0 15px 25px
+      rgba(0,0,0,.7)
+    )
+    drop-shadow(
+      0 0 25px
+      rgba(70,150,255,.5)
     );
-
 }
 
 
 /* =========================
-   MAIN BODY
+   REALISTIC SHIP
 ========================= */
 
-.craft{
+.spacecraft{
 
   position:absolute;
 
-  left:90px;
-  top:105px;
+  left:100px;
+  top:90px;
 
-  width:500px;
-  height:135px;
+  width:520px;
+  height:170px;
 
   border-radius:
-    70px 110px 110px 70px;
+    48% 55% 45% 48%;
 
   background:
 
     linear-gradient(
       180deg,
-      #eef5ff 0%,
-      #b9c9df 35%,
-      #657793 70%,
-      #293754 100%
+      #dfe7ef 0%,
+      #8796a8 35%,
+      #3d4a5c 65%,
+      #111925 100%
     );
 
   border:
-    3px solid
-    rgba(255,255,255,.8);
+    2px solid
+    rgba(255,255,255,.5);
 
   box-shadow:
 
-    inset 0 -25px 35px
-    rgba(10,20,45,.45),
+    inset
+    0 15px 20px
+    rgba(255,255,255,.3),
 
-    inset 20px 0 30px
-    rgba(255,255,255,.35),
+    inset
+    0 -25px 30px
+    rgba(0,0,0,.55),
 
-    0 0 30px
-    rgba(70,150,255,.45);
+    0 0 25px
+    rgba(70,140,255,.25);
 
   transform:
-    rotateX(8deg)
-    rotateY(-8deg);
-
+    perspective(800px)
+    rotateY(-8deg)
+    rotateX(4deg);
 }
 
 
 /* =========================
-   TOP FIN
+   METAL PANELS
 ========================= */
 
-.topWing{
+.panel1,
+.panel2,
+.panel3{
 
   position:absolute;
 
-  left:105px;
-  top:-78px;
-
-  width:210px;
-  height:95px;
+  height:2px;
 
   background:
-
-    linear-gradient(
-      135deg,
-      #62789b,
-      #16213c
-    );
-
-  clip-path:
-    polygon(
-      0 100%,
-      100% 100%,
-      68% 0
-    );
+    rgba(20,30,45,.5);
 
 }
 
-
-/* =========================
-   BOTTOM FIN
-========================= */
-
-.bottomWing{
-
-  position:absolute;
-
-  left:105px;
-  bottom:-78px;
-
-  width:210px;
-  height:95px;
-
-  background:
-
-    linear-gradient(
-      45deg,
-      #62789b,
-      #16213c
-    );
-
-  clip-path:
-    polygon(
-      0 0,
-      100% 0,
-      68% 100%
-    );
-
+.panel1{
+  left:40px;
+  top:42px;
+  width:370px;
 }
 
-
-/* =========================
-   SIDE WINGS
-========================= */
-
-.sideWing{
-
-  position:absolute;
-
-  left:185px;
-  top:35px;
-
-  width:300px;
-  height:65px;
-
-  background:
-
-    linear-gradient(
-      90deg,
-      #293b5d,
-      #8194b2,
-      #273754
-    );
-
-  clip-path:
-    polygon(
-      0 50%,
-      100% 0,
-      78% 100%
-    );
-
-  opacity:.9;
+.panel2{
+  left:55px;
+  top:125px;
+  width:330px;
 }
 
-
-/* =========================
-   BIG PHOTO WINDOW
-========================= */
-
-.photo{
-
-  position:absolute;
-
-  left:190px;
+.panel3{
+  left:250px;
   top:15px;
+  width:2px;
+  height:140px;
+}
 
-  width:175px;
-  height:105px;
 
-  border-radius:50%;
+/* =========================
+   REALISTIC WINDOW
+========================= */
+
+.window{
+
+  position:absolute;
+
+  left:180px;
+  top:24px;
+
+  width:190px;
+  height:120px;
+
+  border-radius:
+    50%;
 
   overflow:hidden;
 
-  background:#020713;
+  background:#020711;
 
   border:
-    9px solid
-    #182b50;
+    10px solid
+    #172131;
 
   box-shadow:
 
-    0 0 0 4px
-    rgba(100,180,255,.3),
+    0 0 0 3px
+    #56677c,
 
-    0 0 30px
-    rgba(60,170,255,.9),
+    0 0 20px
+    rgba(60,160,255,.7),
 
-    inset 0 0 20px #000;
+    inset
+    0 0 25px
+    #000;
 
-  z-index:5;
+  z-index:10;
 }
 
-.photo img{
+
+/* =========================
+   USER PHOTO
+========================= */
+
+.window img{
 
   width:100%;
   height:100%;
@@ -412,60 +336,231 @@ html,body{
   object-fit:cover;
 
   display:block;
+
 }
 
 
 /* =========================
-   WINDOW REFLECTION
+   GLASS REFLECTION
 ========================= */
 
-.reflection{
+.glass{
 
   position:absolute;
 
-  left:200px;
-  top:23px;
+  left:188px;
+  top:30px;
 
-  width:150px;
-  height:85px;
+  width:175px;
+  height:105px;
 
   border-radius:50%;
 
   background:
 
     linear-gradient(
-      135deg,
-      rgba(255,255,255,.35),
-      transparent 45%
+      130deg,
+      rgba(255,255,255,.38),
+      transparent 35%
     );
 
-  pointer-events:none;
+  z-index:11;
 
-  z-index:6;
+  pointer-events:none;
 }
 
 
 /* =========================
-   FRONT NOSE
+   COCKPIT FRAME
+========================= */
+
+.frame{
+
+  position:absolute;
+
+  left:170px;
+  top:15px;
+
+  width:210px;
+  height:140px;
+
+  border-radius:50%;
+
+  border:
+    3px solid
+    rgba(130,160,190,.8);
+
+  pointer-events:none;
+
+  z-index:12;
+}
+
+
+/* =========================
+   WINGS
+========================= */
+
+.wingTop{
+
+  position:absolute;
+
+  left:110px;
+  top:-75px;
+
+  width:230px;
+  height:95px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #68798d,
+      #182130
+    );
+
+  clip-path:
+    polygon(
+      0 100%,
+      100% 100%,
+      70% 0
+    );
+
+}
+
+.wingBottom{
+
+  position:absolute;
+
+  left:110px;
+  bottom:-75px;
+
+  width:230px;
+  height:95px;
+
+  background:
+
+    linear-gradient(
+      45deg,
+      #68798d,
+      #182130
+    );
+
+  clip-path:
+    polygon(
+      0 0,
+      100% 0,
+      70% 100%
+    );
+
+}
+
+
+/* =========================
+   ENGINE
+========================= */
+
+.engine{
+
+  position:absolute;
+
+  left:-55px;
+  top:47px;
+
+  width:80px;
+  height:75px;
+
+  border-radius:50%;
+
+  background:
+
+    radial-gradient(
+      circle,
+      #b9c8d8 0%,
+      #425269 35%,
+      #111827 70%
+    );
+
+  box-shadow:
+    inset 0 0 15px #000;
+}
+
+
+/* =========================
+   ENGINE LIGHT
+========================= */
+
+.engineGlow{
+
+  position:absolute;
+
+  left:-170px;
+  top:70px;
+
+  width:150px;
+  height:40px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      transparent,
+      #1765ff,
+      #6edfff,
+      #fff
+    );
+
+  clip-path:
+    polygon(
+      0 50%,
+      70% 0,
+      100% 50%,
+      70% 100%
+    );
+
+  filter:blur(4px);
+
+  animation:
+    enginePulse
+    .12s
+    infinite
+    alternate;
+}
+
+@keyframes enginePulse{
+
+  from{
+    transform:scaleX(.65);
+    opacity:.6;
+  }
+
+  to{
+    transform:scaleX(1.2);
+    opacity:1;
+  }
+}
+
+
+/* =========================
+   FRONT
 ========================= */
 
 .front{
 
   position:absolute;
 
-  right:-135px;
-  top:0;
+  right:-110px;
+  top:10px;
 
-  width:170px;
-  height:135px;
+  width:140px;
+  height:150px;
 
   background:
 
     linear-gradient(
       135deg,
-      #ffffff,
-      #c8d6e9,
-      #61748f
+      #e9eef4,
+      #8998aa,
+      #354256
     );
 
   clip-path:
@@ -486,167 +581,19 @@ html,body{
 
   position:absolute;
 
-  right:-145px;
-  top:48px;
+  right:-115px;
+  top:67px;
 
-  width:20px;
-  height:38px;
-
-  border-radius:50%;
-
-  background:#8de5ff;
-
-  box-shadow:
-
-    0 0 15px #65d0ff,
-    0 0 40px #3b8cff;
-
-}
-
-
-/* =========================
-   REAR ENGINE
-========================= */
-
-.engine{
-
-  position:absolute;
-
-  left:25px;
-  top:25px;
-
-  width:70px;
-  height:85px;
-
-  border-radius:20px;
-
-  background:
-
-    radial-gradient(
-      circle,
-      #7190b8 0%,
-      #273754 45%,
-      #090f20 100%
-    );
-
-  box-shadow:
-    inset 0 0 15px #000;
-
-}
-
-
-/* =========================
-   ENGINE RING
-========================= */
-
-.engineRing{
-
-  position:absolute;
-
-  left:34px;
-  top:34px;
-
-  width:52px;
-  height:68px;
-
-  border:
-    6px solid
-    #3b5375;
+  width:16px;
+  height:30px;
 
   border-radius:50%;
 
-}
-
-
-/* =========================
-   ENGINE GLOW
-========================= */
-
-.engineGlow{
-
-  position:absolute;
-
-  left:-110px;
-  top:47px;
-
-  width:130px;
-  height:45px;
-
-  background:
-
-    linear-gradient(
-      90deg,
-      transparent,
-      #2670ff,
-      #62ddff,
-      #fff
-    );
-
-  clip-path:
-
-    polygon(
-      0 50%,
-      65% 0,
-      100% 50%,
-      65% 100%
-    );
-
-  filter:
-    blur(4px);
-
-  animation:
-    enginePulse
-    .15s
-    infinite
-    alternate;
-
-}
-
-@keyframes enginePulse{
-
-  from{
-    transform:scaleX(.7);
-    opacity:.65;
-  }
-
-  to{
-    transform:scaleX(1.2);
-    opacity:1;
-  }
-
-}
-
-
-/* =========================
-   ENERGY LINES
-========================= */
-
-.energy{
-
-  position:absolute;
-
-  left:105px;
-  top:125px;
-
-  width:450px;
-  height:4px;
-
-  background:
-
-    linear-gradient(
-      90deg,
-      transparent,
-      #4ccfff,
-      transparent
-    );
+  background:#7ee4ff;
 
   box-shadow:
-
-    0 0 12px
-    #48c9ff;
-
-  opacity:.8;
-
+    0 0 15px #65d5ff,
+    0 0 35px #3d8cff;
 }
 
 
@@ -654,32 +601,28 @@ html,body{
    FLIGHT
 ========================= */
 
-@keyframes cruise{
+@keyframes fly{
 
   0%{
 
     transform:
-
       translate(
         -800px,
         var(--y1)
       )
-
-      rotate(-5deg)
-      scale(.9);
+      rotate(-4deg)
+      scale(.85);
 
   }
 
   25%{
 
     transform:
-
       translate(
         18vw,
         var(--y2)
       )
-
-      rotate(3deg)
+      rotate(2deg)
       scale(1);
 
   }
@@ -687,13 +630,11 @@ html,body{
   50%{
 
     transform:
-
       translate(
         45vw,
         var(--y3)
       )
-
-      rotate(-3deg)
+      rotate(-2deg)
       scale(1.08);
 
   }
@@ -701,13 +642,11 @@ html,body{
   75%{
 
     transform:
-
       translate(
         72vw,
         var(--y2)
       )
-
-      rotate(4deg)
+      rotate(3deg)
       scale(1);
 
   }
@@ -715,14 +654,12 @@ html,body{
   100%{
 
     transform:
-
       translate(
         calc(100vw + 800px),
         var(--y1)
       )
-
-      rotate(-4deg)
-      scale(.9);
+      rotate(-3deg)
+      scale(.85);
 
   }
 
@@ -730,34 +667,34 @@ html,body{
 
 
 /* =========================
-   MISSION
+   BOTTOM
 ========================= */
 
 .mission{
 
   position:absolute;
 
-  bottom:25px;
+  bottom:22px;
 
   left:50%;
 
   transform:
     translateX(-50%);
 
-  color:#9db6ff;
+  color:#9bb4ff;
 
   font-size:12px;
 
   letter-spacing:4px;
 
-  white-space:nowrap;
-
   z-index:100;
+
+  white-space:nowrap;
 }
 
 
 /* =========================
-   UPLOAD BUTTON
+   UPLOAD
 ========================= */
 
 .upload{
@@ -765,28 +702,25 @@ html,body{
   position:absolute;
 
   right:25px;
-  bottom:20px;
+  bottom:18px;
 
   padding:
-    14px 25px;
+    13px 22px;
 
   border-radius:30px;
 
   background:
-    rgba(42,92,210,.9);
+    rgba(35,85,200,.9);
 
-  color:white;
+  color:#fff;
 
   text-decoration:none;
-
-  font-size:14px;
 
   z-index:100;
 
   box-shadow:
-    0 0 25px
-    rgba(50,120,255,.6);
-
+    0 0 20px
+    rgba(50,120,255,.5);
 }
 
 </style>
@@ -812,7 +746,7 @@ html,body{
   <div id="ships"></div>
 
   <div class="mission">
-    🛸 DIGITAL SPACE MISSION
+    🛰️ SPACE EXPLORATION MISSION
   </div>
 
   <a
@@ -827,9 +761,8 @@ html,body{
 
 <script>
 
-
 /* =========================
-   STAR FIELD
+   STARS
 ========================= */
 
 const space =
@@ -837,47 +770,39 @@ const space =
     "space"
   );
 
-for(
-  let i=0;
-  i<280;
-  i++
-){
+for(let i=0;i<300;i++){
 
   const star =
     document.createElement(
       "div"
     );
 
-  star.className =
-    "star";
+  star.className="star";
 
   const size =
     Math.random()*3+1;
 
-  star.style.width =
+  star.style.width=
     size+"px";
 
-  star.style.height =
+  star.style.height=
     size+"px";
 
-  star.style.left =
+  star.style.left=
     Math.random()*100+"%";
 
-  star.style.top =
+  star.style.top=
     Math.random()*100+"%";
 
-  star.style.opacity =
+  star.style.opacity=
     Math.random();
 
-  space.appendChild(
-    star
-  );
-
+  space.appendChild(star);
 }
 
 
 /* =========================
-   SPACECRAFT SYSTEM
+   SHIPS
 ========================= */
 
 const ships =
@@ -910,4 +835,54 @@ async function loadPhotos(){
       photo=>{
 
         if(
- 
+          shown.has(
+            photo.id
+          )
+        ){
+          return;
+        }
+
+        shown.add(
+          photo.id
+        );
+
+        createShip(
+          photo
+        );
+
+      }
+    );
+
+  }catch(error){
+
+    console.log(
+      "Photo loading error",
+      error
+    );
+
+  }
+}
+
+
+/* =========================
+   CREATE SHIP
+========================= */
+
+function createShip(photo){
+
+  const ship =
+    document.createElement(
+      "div"
+    );
+
+  ship.className="ship";
+
+
+  ship.style.setProperty(
+    "--speed",
+    (18+Math.random()*10)+"s"
+  );
+
+
+  ship.style.setProperty(
+    "--y1",
