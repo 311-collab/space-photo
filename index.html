@@ -2,16 +2,19 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <title>SPACE PHOTO</title>
+  <title>SPACE PHOTO MISSION</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       width: 100%;
       height: 100%;
@@ -25,103 +28,300 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
+
       background:
-        radial-gradient(circle at center, #10152b 0%, #03040c 45%, #000 100%);
+        radial-gradient(
+          circle at 50% 50%,
+          #111936 0%,
+          #050817 40%,
+          #000 80%
+        );
     }
+
+    /* -----------------------
+       ดาว
+    ----------------------- */
 
     .star {
       position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
       border-radius: 50%;
-      opacity: 0.8;
+      background: white;
+      pointer-events: none;
     }
+
+    /* -----------------------
+       หัวข้อ
+    ----------------------- */
 
     .title {
       position: absolute;
       top: 25px;
+      left: 0;
+
       width: 100%;
+
       text-align: center;
+
       color: white;
-      font-size: 28px;
+
+      font-size: clamp(20px, 4vw, 32px);
+
       font-weight: bold;
+
       letter-spacing: 5px;
-      z-index: 10;
-      text-shadow: 0 0 15px #4d8cff;
+
+      text-shadow:
+        0 0 10px #568cff,
+        0 0 30px #3159d9;
+
+      z-index: 100;
     }
 
     .subtitle {
+
       position: absolute;
-      top: 65px;
+
+      top: 68px;
+
+      left: 0;
+
       width: 100%;
+
       text-align: center;
-      color: #8fa9ff;
-      font-size: 13px;
-      letter-spacing: 3px;
-      z-index: 10;
+
+      color: #91a9ff;
+
+      font-size: 12px;
+
+      letter-spacing: 4px;
+
+      z-index: 100;
     }
+
+    /* -----------------------
+       ดาวเคราะห์กลาง
+    ----------------------- */
 
     .planet {
+
       position: absolute;
-      width: 170px;
-      height: 170px;
+
+      width: 180px;
+      height: 180px;
+
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
+
+      transform:
+        translate(-50%, -50%);
+
       border-radius: 50%;
+
       background:
-        radial-gradient(circle at 35% 30%, #ffffff 0%, #7da7ff 15%, #3159b8 45%, #080d25 80%);
+
+        radial-gradient(
+          circle at 30% 25%,
+          #ffffff 0%,
+          #8fb5ff 12%,
+          #4267c7 35%,
+          #18265c 65%,
+          #050814 100%
+        );
+
       box-shadow:
-        0 0 40px rgba(80,130,255,.5),
-        0 0 100px rgba(50,90,255,.2);
+
+        0 0 30px rgba(80,130,255,.6),
+
+        0 0 80px rgba(50,100,255,.35),
+
+        0 0 160px rgba(30,60,255,.15);
+
+      z-index: 2;
     }
+
+    /* -----------------------
+       วงโคจร
+    ----------------------- */
 
     .orbit {
+
       position: absolute;
-      width: 70vw;
-      height: 30vw;
-      max-width: 800px;
-      max-height: 350px;
+
+      width: 75vw;
+      height: 35vw;
+
+      max-width: 900px;
+      max-height: 420px;
+
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%) rotate(-15deg);
-      border: 1px solid rgba(120,160,255,.2);
+
+      transform:
+        translate(-50%, -50%)
+        rotate(-15deg);
+
+      border:
+
+        1px solid
+        rgba(100,150,255,.18);
+
       border-radius: 50%;
+
+      z-index: 1;
     }
 
-    .floating {
+    /* -----------------------
+       รูปภาพ
+    ----------------------- */
+
+    .photo {
+
       position: absolute;
-      width: 90px;
-      height: 90px;
+
+      width: 120px;
+      height: 120px;
+
       object-fit: cover;
-      border-radius: 12px;
-      border: 2px solid rgba(255,255,255,.7);
-      box-shadow: 0 0 25px rgba(80,150,255,.7);
-      animation: float 8s ease-in-out infinite;
+
+      border-radius: 18px;
+
+      border:
+
+        2px solid
+        rgba(255,255,255,.8);
+
+      box-shadow:
+
+        0 0 15px rgba(90,150,255,.8),
+
+        0 0 40px rgba(70,120,255,.4);
+
+      z-index: 20;
+
+      animation:
+
+        floatPhoto
+        var(--speed)
+        ease-in-out
+        infinite alternate;
+
     }
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(-4deg);
+    @keyframes floatPhoto {
+
+      0% {
+
+        transform:
+          translate(
+            0px,
+            0px
+          )
+          rotate(
+            var(--rotation)
+          )
+          scale(1);
+
       }
 
       50% {
-        transform: translateY(-30px) rotate(4deg);
+
+        transform:
+          translate(
+            var(--moveX),
+            var(--moveY)
+          )
+          rotate(
+            calc(var(--rotation) * -1)
+          )
+          scale(1.08);
+
       }
+
+      100% {
+
+        transform:
+          translate(
+            calc(var(--moveX) * -1),
+            calc(var(--moveY) * -1)
+          )
+          rotate(
+            var(--rotation)
+          )
+          scale(.95);
+
+      }
+
     }
 
-    .info {
+    /* -----------------------
+       ข้อมูลด้านล่าง
+    ----------------------- */
+
+    .mission {
+
       position: absolute;
+
       bottom: 25px;
+
       left: 50%;
-      transform: translateX(-50%);
-      color: #9db4ff;
-      font-size: 12px;
-      letter-spacing: 2px;
-      z-index: 10;
+
+      transform:
+        translateX(-50%);
+
+      color: #8fa9ff;
+
+      font-size: 11px;
+
+      letter-spacing: 3px;
+
+      z-index: 100;
+
+      white-space: nowrap;
     }
+
+    /* -----------------------
+       ปุ่มอัปโหลด
+    ----------------------- */
+
+    .uploadButton {
+
+      position: absolute;
+
+      right: 25px;
+
+      bottom: 25px;
+
+      padding:
+        12px 18px;
+
+      border-radius: 25px;
+
+      background:
+        rgba(40,80,180,.7);
+
+      color: white;
+
+      text-decoration: none;
+
+      font-size: 13px;
+
+      box-shadow:
+        0 0 20px
+        rgba(50,100,255,.5);
+
+      z-index: 200;
+
+    }
+
+    .uploadButton:hover {
+
+      background:
+        rgba(60,110,230,.9);
+
+    }
+
   </style>
+
 </head>
 
 <body>
@@ -140,35 +340,228 @@
 
   <div class="planet"></div>
 
-  <div class="info">
+  <div id="photos"></div>
+
+  <div class="mission">
     PHOTO MISSION • EXPLORE THE UNIVERSE
   </div>
 
+  <a
+    class="uploadButton"
+    href="/upload.html"
+  >
+    📸 UPLOAD
+  </a>
+
 </div>
+
 
 <script>
 
-  // สร้างดาวจำนวนมาก
-  const space = document.getElementById("space");
+const space =
+  document.getElementById("space");
 
-  for (let i = 0; i < 180; i++) {
+const photosContainer =
+  document.getElementById("photos");
 
-    const star = document.createElement("div");
 
-    star.className = "star";
+/* -----------------------
+   สร้างดาว
+----------------------- */
 
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
+for (
+  let i = 0;
+  i < 220;
+  i++
+) {
 
-    const size = Math.random() * 3 + 1;
+  const star =
+    document.createElement("div");
 
-    star.style.width = size + "px";
-    star.style.height = size + "px";
+  star.className =
+    "star";
 
-    star.style.opacity = Math.random();
+  const size =
+    Math.random() * 3 + 1;
 
-    space.appendChild(star);
+  star.style.width =
+    size + "px";
+
+  star.style.height =
+    size + "px";
+
+  star.style.left =
+    Math.random() * 100 + "%";
+
+  star.style.top =
+    Math.random() * 100 + "%";
+
+  star.style.opacity =
+    Math.random();
+
+  space.appendChild(star);
+
+}
+
+
+/* -----------------------
+   เก็บ ID รูปที่แสดงแล้ว
+----------------------- */
+
+const shownPhotos =
+  new Set();
+
+
+/* -----------------------
+   โหลดรูปจาก Server
+----------------------- */
+
+async function loadPhotos() {
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/photos"
+      );
+
+    const photos =
+      await response.json();
+
+
+    photos.forEach(
+      photo => {
+
+        if (
+          shownPhotos.has(
+            photo.id
+          )
+        ) {
+          return;
+        }
+
+
+        shownPhotos.add(
+          photo.id
+        );
+
+
+        createPhoto(
+          photo
+        );
+
+      }
+    );
+
   }
+
+  catch (error) {
+
+    console.error(
+      "โหลดรูปไม่ได้",
+      error
+    );
+
+  }
+
+}
+
+
+/* -----------------------
+   สร้างรูปบนอวกาศ
+----------------------- */
+
+function createPhoto(photo) {
+
+  const img =
+    document.createElement("img");
+
+  img.className =
+    "photo";
+
+  img.src =
+    photo.data;
+
+  img.alt =
+    photo.name;
+
+
+  /* ตำแหน่งสุ่ม */
+
+  img.style.left =
+    (5 + Math.random() * 90) + "%";
+
+  img.style.top =
+    (12 + Math.random() * 75) + "%";
+
+
+  /* ความเร็ว */
+
+  img.style.setProperty(
+
+    "--speed",
+
+    (5 + Math.random() * 8) + "s"
+
+  );
+
+
+  /* ระยะเคลื่อนที่ */
+
+  img.style.setProperty(
+
+    "--moveX",
+
+    (-60 + Math.random() * 120) + "px"
+
+  );
+
+
+  img.style.setProperty(
+
+    "--moveY",
+
+    (-60 + Math.random() * 120) + "px"
+
+  );
+
+
+  /* การหมุน */
+
+  img.style.setProperty(
+
+    "--rotation",
+
+    (-8 + Math.random() * 16) + "deg"
+
+  );
+
+
+  photosContainer.appendChild(
+    img
+  );
+
+}
+
+
+/* -----------------------
+   โหลดครั้งแรก
+----------------------- */
+
+loadPhotos();
+
+
+/* -----------------------
+   ตรวจรูปใหม่ทุก 3 วินาที
+----------------------- */
+
+setInterval(
+
+  loadPhotos,
+
+  3000
+
+);
 
 </script>
 
