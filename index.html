@@ -30,7 +30,6 @@ html,body{
       #000 100%);
 }
 
-/* ดาว */
 .star{
   position:absolute;
   width:2px;
@@ -40,7 +39,6 @@ html,body{
   z-index:1;
 }
 
-/* โลก */
 .earth{
   position:absolute;
   width:230px;
@@ -49,6 +47,7 @@ html,body{
   top:52%;
   transform:translate(-50%,-50%);
   border-radius:50%;
+
   background:
     radial-gradient(circle at 35% 28%,
       #d5f8ff 0%,
@@ -56,13 +55,14 @@ html,body{
       #286bc8 45%,
       #102e76 70%,
       #020817 100%);
+
   box-shadow:
     0 0 40px rgba(70,160,255,.8),
     0 0 100px rgba(50,110,255,.35);
+
   z-index:2;
 }
 
-/* วงโคจร */
 .orbit{
   position:absolute;
   width:90vw;
@@ -77,7 +77,6 @@ html,body{
   z-index:1;
 }
 
-/* พื้นที่ยาน */
 #ships{
   position:absolute;
   inset:0;
@@ -90,9 +89,11 @@ html,body{
   width:330px;
   height:190px;
   pointer-events:none;
+
   animation:
     fly var(--speed)
     linear forwards;
+
   filter:
     drop-shadow(
       0 0 14px
@@ -100,8 +101,8 @@ html,body{
     );
 }
 
-/* การบิน */
 @keyframes fly{
+
   0%{
     transform:
       translate(-380px,var(--y1))
@@ -122,6 +123,7 @@ html,body{
       rotate(var(--angle))
       scale(var(--scale));
   }
+
 }
 
 /* =================================================
@@ -132,8 +134,10 @@ html,body{
   position:absolute;
   left:25px;
   top:55px;
+
   width:270px;
   height:90px;
+
   border-radius:50%;
 
   background:
@@ -144,7 +148,8 @@ html,body{
       var(--ufoBottom)
     );
 
-  border:2px solid rgba(255,255,255,.7);
+  border:
+    2px solid rgba(255,255,255,.7);
 
   box-shadow:
     inset 0 10px 18px rgba(255,255,255,.35),
@@ -154,18 +159,26 @@ html,body{
 
 .ufo::before{
   content:"";
+
   position:absolute;
+
   left:-8px;
   top:35px;
+
   width:286px;
   height:50px;
+
   border-radius:50%;
-  border:4px solid var(--rim);
-  box-shadow:0 0 14px var(--glow);
+
+  border:
+    4px solid var(--rim);
+
+  box-shadow:
+    0 0 14px var(--glow);
 }
 
 /* =================================================
-   รูปภาพบน UFO — ใหญ่และชัด
+   รูปใหญ่และชัด
 ================================================= */
 
 .dome{
@@ -196,24 +209,20 @@ html,body{
 .dome img{
   width:100%;
   height:100%;
-
   object-fit:cover;
-
   display:block;
-
-  image-rendering:auto;
 }
 
-/* แสงสะท้อนบนกระจก */
 .dome::after{
   content:"";
+
   position:absolute;
   inset:0;
 
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.35),
+      rgba(255,255,255,.3),
       transparent 40%
     );
 
@@ -221,11 +230,12 @@ html,body{
 }
 
 /* =================================================
-   ไฟ UFO
+   ไฟ
 ================================================= */
 
 .light{
   position:absolute;
+
   top:76px;
 
   width:15px;
@@ -261,9 +271,14 @@ html,body{
   position:absolute;
   top:18px;
   width:100%;
+
   text-align:center;
+
   color:white;
-  font-size:clamp(22px,4vw,40px);
+
+  font-size:
+    clamp(22px,4vw,40px);
+
   font-weight:900;
   letter-spacing:6px;
 
@@ -278,16 +293,21 @@ html,body{
   position:absolute;
   top:64px;
   width:100%;
+
   text-align:center;
+
   color:#91aaff;
+
   font-size:11px;
   letter-spacing:4px;
+
   z-index:100;
 }
 
 /* ปุ่ม */
 .upload{
   position:absolute;
+
   right:20px;
   bottom:20px;
 
@@ -296,7 +316,9 @@ html,body{
   border-radius:25px;
 
   background:#315bd5;
+
   color:white;
+
   text-decoration:none;
 
   z-index:100;
@@ -307,6 +329,7 @@ html,body{
 
 .mission{
   position:absolute;
+
   bottom:22px;
   left:50%;
 
@@ -344,7 +367,7 @@ html,body{
   <div id="ships"></div>
 
   <div class="mission">
-    🚀 🛸 🛰️ INFINITE SPACE MISSION
+    🛸 INFINITE UFO MISSION
   </div>
 
   <a
@@ -392,13 +415,25 @@ for(let i=0;i<300;i++){
 
 
 /* =================================================
-   ระบบยาน
+   ระบบ UFO
 ================================================= */
 
 const ships =
   document.getElementById("ships");
 
 let photos=[];
+
+/*
+  คิวรูป
+
+  สำคัญ:
+  1 รูป = 1 UFO
+
+  จะไม่ใช้รูปซ้ำ
+  จนกว่าจะใช้ครบทั้ง 10 รูป
+*/
+
+let photoQueue=[];
 
 
 /* =================================================
@@ -424,10 +459,22 @@ async function loadPhotos(){
     }
 
     /*
-      เอาเฉพาะ 10 รูปล่าสุด
+      ใช้เฉพาะ 10 รูปล่าสุด
     */
+
     photos =
       data.slice(-10);
+
+    /*
+      ถ้ายังไม่มีคิว
+      ให้สร้างคิว
+    */
+
+    if(photoQueue.length===0){
+
+      shufflePhotos();
+
+    }
 
   }catch(error){
 
@@ -437,6 +484,45 @@ async function loadPhotos(){
     );
 
   }
+
+}
+
+
+/* =================================================
+   สุ่มลำดับรูป
+================================================= */
+
+function shufflePhotos(){
+
+  photoQueue =
+    [...photos];
+
+  /*
+    Fisher-Yates Shuffle
+  */
+
+  for(
+    let i=photoQueue.length-1;
+    i>0;
+    i--
+  ){
+
+    const j =
+      Math.floor(
+        Math.random()*(i+1)
+      );
+
+    [
+      photoQueue[i],
+      photoQueue[j]
+    ] =
+    [
+      photoQueue[j],
+      photoQueue[i]
+    ];
+
+  }
+
 }
 
 
@@ -463,23 +549,43 @@ function getImage(photo){
 
 function createUFO(){
 
+  /*
+    ไม่มีรูป
+  */
+
   if(photos.length===0){
     return;
   }
 
+
+  /*
+    ถ้าใช้ครบแล้ว
+    เริ่มรอบใหม่
+  */
+
+  if(photoQueue.length===0){
+
+    shufflePhotos();
+
+  }
+
+
+  /*
+    ดึงรูปออกจากคิว
+  */
+
   const photo =
-    photos[
-      Math.floor(
-        Math.random()*photos.length
-      )
-    ];
+    photoQueue.shift();
+
 
   const image =
     getImage(photo);
 
+
   if(!image){
     return;
   }
+
 
   const ship =
     document.createElement("div");
@@ -487,7 +593,9 @@ function createUFO(){
   ship.className="ship";
 
 
-  /* ความเร็ว */
+  /* =================================================
+     ความเร็ว
+  ================================================= */
 
   const speed =
     12 + Math.random()*12;
@@ -498,7 +606,9 @@ function createUFO(){
   );
 
 
-  /* เส้นทาง */
+  /* =================================================
+     เส้นทาง
+  ================================================= */
 
   ship.style.setProperty(
     "--y1",
@@ -516,7 +626,9 @@ function createUFO(){
   );
 
 
-  /* ขนาด UFO */
+  /* =================================================
+     ขนาด
+  ================================================= */
 
   ship.style.setProperty(
     "--scale",
@@ -524,7 +636,9 @@ function createUFO(){
   );
 
 
-  /* มุม */
+  /* =================================================
+     มุม
+  ================================================= */
 
   ship.style.setProperty(
     "--angle",
@@ -532,153 +646,79 @@ function createUFO(){
   );
 
 
-  /* สี UFO */
+  /* =================================================
+     สี UFO
+  ================================================= */
 
   const colors=[
 
-    [
-      "#eef4fa",
-      "#aab8c7",
-      "#202a38",
-      "#39c6ff",
-      "#5de8ff"
-    ],
+    {
+      top:"#eef4fa",
+      mid:"#aab8c7",
+      bottom:"#202a38",
+      rim:"#39c6ff",
+      light:"#5de8ff"
+    },
 
-    [
-      "#ffffff",
-      "#b7a9c8",
-      "#30203e",
-      "#d75cff",
-      "#f06cff"
-    ],
+    {
+      top:"#ffffff",
+      mid:"#b7a9c8",
+      bottom:"#30203e",
+      rim:"#d75cff",
+      light:"#f06cff"
+    },
 
-    [
-      "#f4fff4",
-      "#a6c4aa",
-      "#1b3320",
-      "#5dff7c",
-      "#66ff88"
-    ],
+    {
+      top:"#f4fff4",
+      mid:"#a6c4aa",
+      bottom:"#1b3320",
+      rim:"#5dff7c",
+      light:"#66ff88"
+    },
 
-    [
-      "#fff5dc",
-      "#c7a77d",
-      "#352518",
-      "#ffb52e",
-      "#ffd15c"
-    ],
+    {
+      top:"#fff5dc",
+      mid:"#c7a77d",
+      bottom:"#352518",
+      rim:"#ffb52e",
+      light:"#ffd15c"
+    },
 
-    [
-      "#f4f4ff",
-      "#8f9fc4",
-      "#17203b",
-      "#668cff",
-      "#739aff"
-    ]
+    {
+      top:"#f4f4ff",
+      mid:"#8f9fc4",
+      bottom:"#17203b",
+      rim:"#668cff",
+      light:"#739aff"
+    }
 
   ];
 
-  const c =
+
+  const color =
     colors[
       Math.floor(
-        Math.random()*colors.length
+        Math.random()*
+        colors.length
       )
     ];
 
-  ship.style.setProperty("--ufoTop",c[0]);
-  ship.style.setProperty("--ufoMid",c[1]);
-  ship.style.setProperty("--ufoBottom",c[2]);
-  ship.style.setProperty("--rim",c[3]);
-  ship.style.setProperty("--light",c[4]);
+
   ship.style.setProperty(
-    "--glow",
-    c[4]
+    "--ufoTop",
+    color.top
   );
 
-
-  /* UFO */
-
-  ship.innerHTML=`
-
-    <div class="ufo">
-
-      <div class="dome">
-
-        <img
-          src="${image}"
-          alt="Space Photo"
-        >
-
-      </div>
-
-      <div class="light light1"></div>
-      <div class="light light2"></div>
-      <div class="light light3"></div>
-      <div class="light light4"></div>
-
-    </div>
-
-  `;
-
-  ships.appendChild(ship);
-
-
-  /* ลบเมื่อบินออก */
-
-  setTimeout(
-    ()=>{
-      ship.remove();
-    },
-    speed*1000+1000
+  ship.style.setProperty(
+    "--ufoMid",
+    color.mid
   );
 
-}
-
-
-/* =================================================
-   เริ่มระบบ
-================================================= */
-
-async function start(){
-
-  await loadPhotos();
-
-
-  /*
-    ปล่อย UFO ต่อเนื่อง
-    ไม่มีช่วงว่าง
-  */
-
-  for(let i=0;i<10;i++){
-
-    setTimeout(
-      createUFO,
-      i*700
-    );
-
-  }
-
-
-  setInterval(
-    createUFO,
-    900
+  ship.style.setProperty(
+    "--ufoBottom",
+    color.bottom
   );
 
-
-  /*
-    ตรวจรูปใหม่ทุก 5 วินาที
-  */
-
-  setInterval(
-    loadPhotos,
-    5000
-  );
-
-}
-
-start();
-
-</script>
-
-</body>
-</html>
+  ship.style.setProperty(
+    "--rim",
+    color.r
