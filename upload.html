@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Upload Photo</title>
+  <title>Space Photo Upload</title>
 
   <style>
     * {
@@ -37,7 +37,6 @@
     h1 {
       font-size: 30px;
       letter-spacing: 4px;
-      margin-bottom: 10px;
     }
 
     p {
@@ -60,10 +59,6 @@
       box-shadow: 0 0 25px rgba(50,100,255,.5);
     }
 
-    .button:active {
-      transform: scale(.96);
-    }
-
     #preview {
       display: none;
       width: 100%;
@@ -82,56 +77,85 @@
 
 <body>
 
-  <div class="box">
+<div class="box">
 
-    <h1>🚀 SPACE PHOTO</h1>
+  <h1>🚀 SPACE PHOTO</h1>
 
-    <p>
-      ส่งภาพของคุณเข้าสู่ภารกิจอวกาศ
-    </p>
+  <p>ส่งภาพของคุณเข้าสู่ภารกิจอวกาศ</p>
 
-    <label class="button" for="photo">
-      📸 เลือกรูปภาพ
-    </label>
+  <label class="button" for="photo">
+    📸 เลือกรูปภาพ
+  </label>
 
-    <input
-      id="photo"
-      type="file"
-      accept="image/*"
-    >
+  <input
+    id="photo"
+    type="file"
+    accept="image/*"
+  >
 
-    <img id="preview">
+  <img id="preview">
 
-    <div id="status"></div>
+  <div id="status"></div>
 
-  </div>
+</div>
 
 <script>
 
-const photo = document.getElementById("photo");
+const photoInput = document.getElementById("photo");
 const preview = document.getElementById("preview");
 const status = document.getElementById("status");
 
-photo.addEventListener("change", function () {
+photoInput.addEventListener("change", async function () {
 
   const file = this.files[0];
 
   if (!file) return;
 
+  // แสดงตัวอย่าง
   const reader = new FileReader();
 
-  reader.onload = function (event) {
-
+  reader.onload = function(event) {
     preview.src = event.target.result;
-
     preview.style.display = "block";
-
-    status.textContent =
-      "✅ เตรียมภาพสำหรับภารกิจอวกาศแล้ว";
-
   };
 
   reader.readAsDataURL(file);
+
+  status.textContent = "🚀 กำลังส่งภาพเข้าสู่อวกาศ...";
+
+  const formData = new FormData();
+
+  formData.append("photo", file);
+
+  try {
+
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+
+      status.textContent =
+        "✅ ส่งภาพเข้าสู่ภารกิจสำเร็จ!";
+
+    } else {
+
+      status.textContent =
+        "❌ ไม่สามารถส่งภาพได้";
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+    status.textContent =
+      "❌ เกิดข้อผิดพลาดในการเชื่อมต่อ";
+
+  }
 
 });
 
