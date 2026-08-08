@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SPACE ROCKET MISSION</title>
+<title>BIG SPACE ROCKET</title>
 
 <style>
 
@@ -12,7 +12,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -30,11 +31,12 @@ html, body {
   background:
     radial-gradient(
       circle at 50% 50%,
-      #111a3d 0%,
-      #050817 45%,
+      #14204a 0%,
+      #060a1d 45%,
       #000 100%
     );
 }
+
 
 /* =========================
    ดาว
@@ -44,115 +46,112 @@ html, body {
   position: absolute;
   background: white;
   border-radius: 50%;
-  pointer-events: none;
 }
 
+
 /* =========================
-   หัวเรื่อง
+   TITLE
 ========================= */
 
 .title {
   position: absolute;
-  top: 22px;
+  top: 20px;
   left: 0;
   width: 100%;
 
   text-align: center;
 
   color: white;
-  font-size: clamp(20px, 4vw, 32px);
+
+  font-size: clamp(24px, 5vw, 42px);
+
   font-weight: bold;
-  letter-spacing: 5px;
+
+  letter-spacing: 6px;
 
   text-shadow:
-    0 0 10px #568cff,
-    0 0 30px #3159d9;
+    0 0 15px #568cff,
+    0 0 35px #3159d9;
 
   z-index: 100;
 }
 
+
 .subtitle {
+
   position: absolute;
-  top: 65px;
-  left: 0;
+
+  top: 70px;
+
   width: 100%;
 
   text-align: center;
 
-  color: #91a9ff;
-  font-size: 12px;
-  letter-spacing: 4px;
+  color: #9ab0ff;
+
+  font-size: 13px;
+
+  letter-spacing: 5px;
 
   z-index: 100;
 }
 
+
 /* =========================
-   โลก
+   EARTH
 ========================= */
 
 .earth {
 
   position: absolute;
 
-  width: 220px;
-  height: 220px;
+  width: 260px;
+  height: 260px;
 
   left: 50%;
   top: 50%;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
   border-radius: 50%;
 
   background:
+
     radial-gradient(
       circle at 35% 30%,
-      #8bd7ff 0%,
-      #3976d8 28%,
-      #163b91 55%,
-      #07102d 80%,
+      #9be3ff 0%,
+      #4b8fe8 25%,
+      #17449e 50%,
+      #071432 75%,
       #02040c 100%
     );
 
   box-shadow:
-    0 0 35px rgba(70,150,255,.7),
-    0 0 100px rgba(40,100,255,.35);
+
+    0 0 45px
+    rgba(80,160,255,.75),
+
+    0 0 120px
+    rgba(50,100,255,.35);
 
   z-index: 2;
 }
 
-/* แสงรอบโลก */
-
-.earth::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: -12px;
-
-  border-radius: 50%;
-
-  border: 2px solid rgba(100,180,255,.15);
-
-  box-shadow:
-    0 0 35px rgba(70,150,255,.2);
-
-}
 
 /* =========================
-   เส้นวงโคจร
+   ORBIT
 ========================= */
 
 .orbit {
 
   position: absolute;
 
-  width: 75vw;
-  height: 38vw;
+  width: 85vw;
+  height: 42vw;
 
-  max-width: 1100px;
-  max-height: 500px;
+  max-width: 1300px;
+  max-height: 600px;
 
   left: 50%;
   top: 50%;
@@ -162,106 +161,133 @@ html, body {
     rotate(-10deg);
 
   border:
-    1px solid rgba(100,160,255,.18);
+    1px solid
+    rgba(120,170,255,.2);
 
   border-radius: 50%;
 
   z-index: 1;
 }
 
+
 /* =========================
-   ชั้นจรวด
+   ROCKET CONTAINER
 ========================= */
 
 #rockets {
+
   position: absolute;
+
   inset: 0;
 
   z-index: 20;
+
 }
 
+
 /* =========================
-   จรวด
+   BIG ROCKET
 ========================= */
 
 .rocket {
 
   position: absolute;
 
-  width: 380px;
-  height: 180px;
+  width: 560px;
+  height: 260px;
 
   display: flex;
+
   align-items: center;
 
   animation:
+
     rocketFlight
     var(--duration)
     linear
     infinite;
 
   filter:
+
     drop-shadow(
-      0 0 12px
-      rgba(80,150,255,.7)
+      0 0 20px
+      rgba(80,160,255,.8)
     );
 
 }
 
+
 /* =========================
-   ตัวจรวด
+   ROCKET BODY
 ========================= */
 
 .body {
 
   position: relative;
 
-  width: 270px;
-  height: 105px;
+  width: 400px;
+  height: 150px;
 
   border-radius:
-    50px
-    18px
-    18px
-    50px;
+
+    80px
+    35px
+    35px
+    80px;
 
   background:
+
     linear-gradient(
       to bottom,
-      #f4f7ff,
-      #9ca9c8
+      #ffffff 0%,
+      #dbe3f4 45%,
+      #8e9bb5 100%
     );
 
   border:
-    2px solid rgba(255,255,255,.8);
+
+    3px solid
+    rgba(255,255,255,.9);
 
   box-shadow:
-    inset 0 -8px 15px rgba(0,0,0,.25);
+
+    inset
+    0 -20px
+    30px
+    rgba(0,0,0,.25),
+
+    0 0 30px
+    rgba(100,160,255,.4);
 
 }
 
+
 /* =========================
-   หัวจรวด
+   NOSE
 ========================= */
 
 .nose {
 
   position: absolute;
 
-  right: -35px;
+  right: -75px;
+
   top: 0;
 
-  width: 55px;
-  height: 58px;
+  width: 100px;
+
+  height: 150px;
 
   background:
+
     linear-gradient(
       to right,
-      #dce6ff,
+      #dce7ff,
       #ffffff
     );
 
   clip-path:
+
     polygon(
       0 0,
       100% 50%,
@@ -270,70 +296,116 @@ html, body {
 
 }
 
+
 /* =========================
-   หน้าต่างรูปภาพ
+   BIG PHOTO WINDOW
 ========================= */
 
 .photoWindow {
 
   position: absolute;
 
-  left: 65px;
-  top: 15px;
+  left: 95px;
 
-  width: 105px;
-  height: 75px;
+  top: 25px;
 
-  border-radius: 8px;
+  width: 190px;
+
+  height: 100px;
+
+  border-radius: 18px;
 
   overflow: hidden;
 
-  border:
-    3px solid #202b50;
+  background: #030713;
 
-  background: #050817;
+  border:
+
+    6px solid
+    #182343;
 
   box-shadow:
-    0 0 10px
-    rgba(80,150,255,.8);
+
+    0 0 20px
+    rgba(80,170,255,.9),
+
+    inset 0 0 15px
+    rgba(0,0,0,.7);
 
 }
+
 
 .photoWindow img {
 
   width: 100%;
+
   height: 100%;
 
   object-fit: cover;
 
+  display: block;
+
 }
 
+
 /* =========================
-   ปีก
+   PHOTO LABEL
+========================= */
+
+.photoLabel {
+
+  position: absolute;
+
+  left: 95px;
+
+  top: 130px;
+
+  width: 190px;
+
+  text-align: center;
+
+  color: #1b2c54;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+}
+
+
+/* =========================
+   WINGS
 ========================= */
 
 .wing {
 
   position: absolute;
 
-  width: 38px;
-  height: 30px;
+  width: 95px;
+
+  height: 80px;
 
   background:
+
     linear-gradient(
       135deg,
-      #53658e,
-      #18223f
+      #667799,
+      #182441
     );
 
 }
 
+
 .wing.top {
 
-  left: 18px;
-  top: -18px;
+  left: 45px;
+
+  top: -65px;
 
   clip-path:
+
     polygon(
       0 100%,
       100% 100%,
@@ -342,12 +414,15 @@ html, body {
 
 }
 
+
 .wing.bottom {
 
-  left: 18px;
-  bottom: -18px;
+  left: 45px;
+
+  bottom: -65px;
 
   clip-path:
+
     polygon(
       0 0,
       100% 0,
@@ -356,58 +431,73 @@ html, body {
 
 }
 
+
 /* =========================
-   เครื่องยนต์
+   ENGINE
 ========================= */
 
 .engine {
 
   position: absolute;
 
-  left: -18px;
-  top: 17px;
+  left: -35px;
 
-  width: 28px;
-  height: 24px;
+  top: 42px;
 
-  background: #202a47;
+  width: 55px;
 
-  border-radius: 8px;
+  height: 65px;
+
+  background:
+
+    linear-gradient(
+      to right,
+      #141b31,
+      #3b4a6c
+    );
+
+  border-radius: 15px;
 
 }
 
+
 /* =========================
-   เปลวไฟ
+   FLAME
 ========================= */
 
 .flame {
 
   position: absolute;
 
-  left: -75px;
-  top: 12px;
+  left: -180px;
 
-  width: 75px;
-  height: 35px;
+  top: 35px;
+
+  width: 180px;
+
+  height: 80px;
 
   background:
+
     linear-gradient(
       to left,
-      #fff,
-      #6fd8ff,
+      #ffffff,
+      #65dfff,
       #397aff,
       transparent
     );
 
   clip-path:
+
     polygon(
       100% 50%,
-      65% 15%,
+      65% 10%,
       0 50%,
-      65% 85%
+      65% 90%
     );
 
   animation:
+
     flame
     .15s
     infinite
@@ -415,22 +505,32 @@ html, body {
 
 }
 
+
 @keyframes flame {
 
   from {
-    transform: scaleX(.7);
+
+    transform:
+      scaleX(.65);
+
     opacity: .7;
+
   }
 
   to {
-    transform: scaleX(1.15);
+
+    transform:
+      scaleX(1.15);
+
     opacity: 1;
+
   }
 
 }
 
+
 /* =========================
-   จรวดบิน
+   ROCKET FLIGHT
 ========================= */
 
 @keyframes rocketFlight {
@@ -438,35 +538,55 @@ html, body {
   0% {
 
     transform:
-      translateX(-300px)
-      translateY(var(--startY))
-      rotate(-3deg);
+
+      translateX(-650px)
+
+      translateY(
+        var(--startY)
+      )
+
+      rotate(-4deg);
 
   }
 
   25% {
 
     transform:
-      translateX(25vw)
-      translateY(var(--midY))
-      rotate(2deg);
+
+      translateX(20vw)
+
+      translateY(
+        var(--midY)
+      )
+
+      rotate(3deg);
 
   }
 
   50% {
 
     transform:
-      translateX(50vw)
-      translateY(var(--endY))
-      rotate(-2deg);
+
+      translateX(45vw)
+
+      translateY(
+        var(--endY)
+      )
+
+      rotate(-3deg);
 
   }
 
   75% {
 
     transform:
-      translateX(75vw)
-      translateY(var(--midY))
+
+      translateX(70vw)
+
+      translateY(
+        var(--midY)
+      )
+
       rotate(3deg);
 
   }
@@ -474,16 +594,24 @@ html, body {
   100% {
 
     transform:
-      translateX(calc(100vw + 300px))
-      translateY(var(--startY))
-      rotate(-2deg);
+
+      translateX(
+        calc(100vw + 650px)
+      )
+
+      translateY(
+        var(--startY)
+      )
+
+      rotate(-3deg);
 
   }
 
 }
 
+
 /* =========================
-   ข้อมูล
+   MISSION
 ========================= */
 
 .mission {
@@ -491,51 +619,64 @@ html, body {
   position: absolute;
 
   bottom: 25px;
+
   left: 50%;
 
   transform:
     translateX(-50%);
 
-  color: #8fa9ff;
+  color: #9ab0ff;
 
-  font-size: 11px;
-  letter-spacing: 3px;
+  font-size: 12px;
 
-  z-index: 100;
+  letter-spacing: 4px;
 
   white-space: nowrap;
 
+  z-index: 100;
+
 }
+
+
+/* =========================
+   UPLOAD BUTTON
+========================= */
 
 .upload {
 
   position: absolute;
 
-  right: 20px;
+  right: 25px;
+
   bottom: 20px;
 
   padding:
-    12px 20px;
+    14px 25px;
 
-  border-radius: 25px;
+  border-radius: 30px;
 
   background:
-    rgba(40,80,190,.8);
+
+    rgba(40,90,210,.85);
 
   color: white;
 
   text-decoration: none;
 
+  font-size: 15px;
+
   z-index: 100;
 
   box-shadow:
-    0 0 20px
-    rgba(50,100,255,.5);
+
+    0 0 25px
+    rgba(50,120,255,.6);
 
 }
 
 </style>
 </head>
+
 
 <body>
 
@@ -546,24 +687,29 @@ html, body {
   </div>
 
   <div class="subtitle">
-    DIGITAL SPACE MISSION
+    DIGITAL SPACE PHOTO MISSION
   </div>
+
 
   <div class="orbit"></div>
 
+
   <div class="earth"></div>
 
+
   <div id="rockets"></div>
+
 
   <div class="mission">
     EVERY PHOTO • A NEW SPACE MISSION
   </div>
 
+
   <a
     class="upload"
     href="/upload.html"
   >
-    📸 UPLOAD
+    📸 UPLOAD PHOTO
   </a>
 
 </div>
@@ -571,57 +717,79 @@ html, body {
 
 <script>
 
+
 /* =========================
-   สร้างดาว
+   CREATE STARS
 ========================= */
 
 const space =
-  document.getElementById("space");
+  document.getElementById(
+    "space"
+  );
 
-for (let i = 0; i < 220; i++) {
+
+for (
+  let i = 0;
+  i < 250;
+  i++
+) {
 
   const star =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
   star.className =
     "star";
 
+
   const size =
     Math.random() * 3 + 1;
+
 
   star.style.width =
     size + "px";
 
+
   star.style.height =
     size + "px";
+
 
   star.style.left =
     Math.random() * 100 + "%";
 
+
   star.style.top =
     Math.random() * 100 + "%";
+
 
   star.style.opacity =
     Math.random();
 
-  space.appendChild(star);
+
+  space.appendChild(
+    star
+  );
 
 }
 
 
 /* =========================
-   ระบบจรวด
+   ROCKET SYSTEM
 ========================= */
 
 const rockets =
-  document.getElementById("rockets");
+  document.getElementById(
+    "rockets"
+  );
+
 
 const shown =
   new Set();
 
 
 /* =========================
-   โหลดรูป
+   LOAD PHOTOS
 ========================= */
 
 async function loadPhotos() {
@@ -629,29 +797,47 @@ async function loadPhotos() {
   try {
 
     const response =
-      await fetch("/api/photos");
+      await fetch(
+        "/api/photos"
+      );
+
 
     const photos =
       await response.json();
 
-    photos.forEach(photo => {
 
-      if (shown.has(photo.id)) {
-        return;
+    photos.forEach(
+      photo => {
+
+        if (
+          shown.has(
+            photo.id
+          )
+        ) {
+
+          return;
+
+        }
+
+
+        shown.add(
+          photo.id
+        );
+
+
+        createRocket(
+          photo
+        );
+
       }
-
-      shown.add(photo.id);
-
-      createRocket(photo);
-
-    });
+    );
 
   }
 
   catch (error) {
 
     console.log(
-      "ไม่สามารถโหลดรูป",
+      "Photo loading error",
       error
     );
 
@@ -661,22 +847,29 @@ async function loadPhotos() {
 
 
 /* =========================
-   สร้างจรวด
+   CREATE ROCKET
 ========================= */
 
-function createRocket(photo) {
+function createRocket(
+  photo
+) {
 
   const rocket =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
+
 
   rocket.className =
     "rocket";
 
 
-  /* ความเร็วแต่ละลำ */
+  /* ความเร็ว */
 
   const duration =
-    10 + Math.random() * 10;
+    18 +
+    Math.random() * 10;
+
 
   rocket.style.setProperty(
     "--duration",
@@ -684,21 +877,41 @@ function createRocket(photo) {
   );
 
 
-  /* เส้นทางการบิน */
+  /* เส้นทาง */
 
   rocket.style.setProperty(
+
     "--startY",
-    (10 + Math.random() * 70) + "vh"
+
+    (
+      8 +
+      Math.random() * 75
+    ) + "vh"
+
   );
 
+
   rocket.style.setProperty(
+
     "--midY",
-    (15 + Math.random() * 60) + "vh"
+
+    (
+      10 +
+      Math.random() * 70
+    ) + "vh"
+
   );
 
+
   rocket.style.setProperty(
+
     "--endY",
-    (10 + Math.random() * 70) + "vh"
+
+    (
+      8 +
+      Math.random() * 75
+    ) + "vh"
+
   );
 
 
@@ -723,6 +936,10 @@ function createRocket(photo) {
 
       </div>
 
+      <div class="photoLabel">
+        SPACE MISSION
+      </div>
+
       <div class="nose"></div>
 
     </div>
@@ -738,22 +955,12 @@ function createRocket(photo) {
 
 
 /* =========================
-   โหลดครั้งแรก
+   START
 ========================= */
 
 loadPhotos();
 
 
 /* =========================
-   ตรวจรูปใหม่
-========================= */
-
-setInterval(
-  loadPhotos,
-  3000
-);
-
-</script>
-
-</body>
-</html>
+   CHECK NEW PHOTOS
+=================
