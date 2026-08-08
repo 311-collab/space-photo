@@ -3,11 +3,174 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Space Photo</title>
+
+  <title>SPACE PHOTO</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+      font-family: Arial, sans-serif;
+    }
+
+    #space {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, #10152b 0%, #03040c 45%, #000 100%);
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+    }
+
+    .title {
+      position: absolute;
+      top: 25px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      z-index: 10;
+      text-shadow: 0 0 15px #4d8cff;
+    }
+
+    .subtitle {
+      position: absolute;
+      top: 65px;
+      width: 100%;
+      text-align: center;
+      color: #8fa9ff;
+      font-size: 13px;
+      letter-spacing: 3px;
+      z-index: 10;
+    }
+
+    .planet {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #ffffff 0%, #7da7ff 15%, #3159b8 45%, #080d25 80%);
+      box-shadow:
+        0 0 40px rgba(80,130,255,.5),
+        0 0 100px rgba(50,90,255,.2);
+    }
+
+    .orbit {
+      position: absolute;
+      width: 70vw;
+      height: 30vw;
+      max-width: 800px;
+      max-height: 350px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-15deg);
+      border: 1px solid rgba(120,160,255,.2);
+      border-radius: 50%;
+    }
+
+    .floating {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,.7);
+      box-shadow: 0 0 25px rgba(80,150,255,.7);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+      }
+
+      50% {
+        transform: translateY(-30px) rotate(4deg);
+      }
+    }
+
+    .info {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #9db4ff;
+      font-size: 12px;
+      letter-spacing: 2px;
+      z-index: 10;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>🚀 Space Photo</h1>
-  <p>เว็บไซต์ทำงานแล้ว!</p>
+
+<div id="space">
+
+  <div class="title">
+    SPACE PHOTO
+  </div>
+
+  <div class="subtitle">
+    DIGITAL SPACE MISSION
+  </div>
+
+  <div class="orbit"></div>
+
+  <div class="planet"></div>
+
+  <div class="info">
+    PHOTO MISSION • EXPLORE THE UNIVERSE
+  </div>
+
+</div>
+
+<script>
+
+  // สร้างดาวจำนวนมาก
+  const space = document.getElementById("space");
+
+  for (let i = 0; i < 180; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    const size = Math.random() * 3 + 1;
+
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+
+    star.style.opacity = Math.random();
+
+    space.appendChild(star);
+  }
+
+</script>
+
 </body>
 </html>
