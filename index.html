@@ -4,111 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SPACE PHOTO MISSION</title>
+<title>BIG SPACE ROCKET</title>
 
 <style>
 
-*{
-  box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
-html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  background:#000;
-  font-family:Arial,sans-serif;
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: Arial, sans-serif;
 }
 
-#space{
-  position:relative;
-  width:100vw;
-  height:100vh;
-  overflow:hidden;
+#space {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 
   background:
     radial-gradient(
-      ellipse at center,
-      #142451 0%,
-      #080d20 40%,
-      #02030a 75%,
+      circle at 50% 50%,
+      #14204a 0%,
+      #060a1d 45%,
       #000 100%
     );
 }
 
 
 /* =========================
-   STARS
+   ดาว
 ========================= */
 
-.star{
-  position:absolute;
-  background:#fff;
-  border-radius:50%;
-  z-index:1;
-}
-
-
-/* =========================
-   EARTH
-========================= */
-
-.earth{
-  position:absolute;
-
-  width:260px;
-  height:260px;
-
-  left:50%;
-  top:50%;
-
-  transform:translate(-50%,-50%);
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle at 35% 30%,
-      #b9efff,
-      #4b9be8 25%,
-      #1e55ae 50%,
-      #081a4a 75%,
-      #01030c 100%
-    );
-
-  box-shadow:
-    0 0 40px rgba(70,150,255,.8),
-    0 0 100px rgba(50,100,255,.35);
-
-  z-index:2;
-}
-
-
-/* =========================
-   ORBIT
-========================= */
-
-.orbit{
-  position:absolute;
-
-  width:90vw;
-  height:45vw;
-
-  left:50%;
-  top:50%;
-
-  transform:
-    translate(-50%,-50%)
-    rotate(-12deg);
-
-  border:
-    1px solid
-    rgba(100,170,255,.2);
-
-  border-radius:50%;
-
-  z-index:1;
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
 }
 
 
@@ -116,454 +53,241 @@ html,body{
    TITLE
 ========================= */
 
-.title{
-  position:absolute;
+.title {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
 
-  top:22px;
+  text-align: center;
 
-  width:100%;
+  color: white;
 
-  text-align:center;
+  font-size: clamp(24px, 5vw, 42px);
 
-  color:#fff;
+  font-weight: bold;
 
-  font-size:
-    clamp(22px,4vw,40px);
-
-  font-weight:bold;
-
-  letter-spacing:6px;
+  letter-spacing: 6px;
 
   text-shadow:
-    0 0 15px #4d9cff,
-    0 0 35px #2360db;
+    0 0 15px #568cff,
+    0 0 35px #3159d9;
 
-  z-index:100;
-}
-
-.subtitle{
-  position:absolute;
-
-  top:68px;
-
-  width:100%;
-
-  text-align:center;
-
-  color:#91adff;
-
-  font-size:12px;
-
-  letter-spacing:4px;
-
-  z-index:100;
+  z-index: 100;
 }
 
 
-/* =========================
-   SPACECRAFT
-========================= */
+.subtitle {
 
-#ships{
-  position:absolute;
-  inset:0;
-  z-index:20;
-}
+  position: absolute;
 
-.ship{
+  top: 70px;
 
-  position:absolute;
+  width: 100%;
 
-  width:720px;
-  height:360px;
+  text-align: center;
 
-  animation:
-    fly
-    var(--speed)
-    linear
-    infinite;
+  color: #9ab0ff;
 
-  filter:
-    drop-shadow(
-      0 15px 25px
-      rgba(0,0,0,.7)
-    )
-    drop-shadow(
-      0 0 25px
-      rgba(70,150,255,.5)
-    );
+  font-size: 13px;
+
+  letter-spacing: 5px;
+
+  z-index: 100;
 }
 
 
 /* =========================
-   REALISTIC SHIP
+   EARTH
 ========================= */
 
-.spacecraft{
+.earth {
 
-  position:absolute;
+  position: absolute;
 
-  left:100px;
-  top:90px;
+  width: 260px;
+  height: 260px;
 
-  width:520px;
-  height:170px;
-
-  border-radius:
-    48% 55% 45% 48%;
-
-  background:
-
-    linear-gradient(
-      180deg,
-      #dfe7ef 0%,
-      #8796a8 35%,
-      #3d4a5c 65%,
-      #111925 100%
-    );
-
-  border:
-    2px solid
-    rgba(255,255,255,.5);
-
-  box-shadow:
-
-    inset
-    0 15px 20px
-    rgba(255,255,255,.3),
-
-    inset
-    0 -25px 30px
-    rgba(0,0,0,.55),
-
-    0 0 25px
-    rgba(70,140,255,.25);
+  left: 50%;
+  top: 50%;
 
   transform:
-    perspective(800px)
-    rotateY(-8deg)
-    rotateX(4deg);
-}
+    translate(-50%, -50%);
 
-
-/* =========================
-   METAL PANELS
-========================= */
-
-.panel1,
-.panel2,
-.panel3{
-
-  position:absolute;
-
-  height:2px;
-
-  background:
-    rgba(20,30,45,.5);
-
-}
-
-.panel1{
-  left:40px;
-  top:42px;
-  width:370px;
-}
-
-.panel2{
-  left:55px;
-  top:125px;
-  width:330px;
-}
-
-.panel3{
-  left:250px;
-  top:15px;
-  width:2px;
-  height:140px;
-}
-
-
-/* =========================
-   REALISTIC WINDOW
-========================= */
-
-.window{
-
-  position:absolute;
-
-  left:180px;
-  top:24px;
-
-  width:190px;
-  height:120px;
-
-  border-radius:
-    50%;
-
-  overflow:hidden;
-
-  background:#020711;
-
-  border:
-    10px solid
-    #172131;
-
-  box-shadow:
-
-    0 0 0 3px
-    #56677c,
-
-    0 0 20px
-    rgba(60,160,255,.7),
-
-    inset
-    0 0 25px
-    #000;
-
-  z-index:10;
-}
-
-
-/* =========================
-   USER PHOTO
-========================= */
-
-.window img{
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  display:block;
-
-}
-
-
-/* =========================
-   GLASS REFLECTION
-========================= */
-
-.glass{
-
-  position:absolute;
-
-  left:188px;
-  top:30px;
-
-  width:175px;
-  height:105px;
-
-  border-radius:50%;
-
-  background:
-
-    linear-gradient(
-      130deg,
-      rgba(255,255,255,.38),
-      transparent 35%
-    );
-
-  z-index:11;
-
-  pointer-events:none;
-}
-
-
-/* =========================
-   COCKPIT FRAME
-========================= */
-
-.frame{
-
-  position:absolute;
-
-  left:170px;
-  top:15px;
-
-  width:210px;
-  height:140px;
-
-  border-radius:50%;
-
-  border:
-    3px solid
-    rgba(130,160,190,.8);
-
-  pointer-events:none;
-
-  z-index:12;
-}
-
-
-/* =========================
-   WINGS
-========================= */
-
-.wingTop{
-
-  position:absolute;
-
-  left:110px;
-  top:-75px;
-
-  width:230px;
-  height:95px;
-
-  background:
-
-    linear-gradient(
-      135deg,
-      #68798d,
-      #182130
-    );
-
-  clip-path:
-    polygon(
-      0 100%,
-      100% 100%,
-      70% 0
-    );
-
-}
-
-.wingBottom{
-
-  position:absolute;
-
-  left:110px;
-  bottom:-75px;
-
-  width:230px;
-  height:95px;
-
-  background:
-
-    linear-gradient(
-      45deg,
-      #68798d,
-      #182130
-    );
-
-  clip-path:
-    polygon(
-      0 0,
-      100% 0,
-      70% 100%
-    );
-
-}
-
-
-/* =========================
-   ENGINE
-========================= */
-
-.engine{
-
-  position:absolute;
-
-  left:-55px;
-  top:47px;
-
-  width:80px;
-  height:75px;
-
-  border-radius:50%;
+  border-radius: 50%;
 
   background:
 
     radial-gradient(
-      circle,
-      #b9c8d8 0%,
-      #425269 35%,
-      #111827 70%
+      circle at 35% 30%,
+      #9be3ff 0%,
+      #4b8fe8 25%,
+      #17449e 50%,
+      #071432 75%,
+      #02040c 100%
     );
 
   box-shadow:
-    inset 0 0 15px #000;
+
+    0 0 45px
+    rgba(80,160,255,.75),
+
+    0 0 120px
+    rgba(50,100,255,.35);
+
+  z-index: 2;
 }
 
 
 /* =========================
-   ENGINE LIGHT
+   ORBIT
 ========================= */
 
-.engineGlow{
+.orbit {
 
-  position:absolute;
+  position: absolute;
 
-  left:-170px;
-  top:70px;
+  width: 85vw;
+  height: 42vw;
 
-  width:150px;
-  height:40px;
+  max-width: 1300px;
+  max-height: 600px;
 
-  background:
+  left: 50%;
+  top: 50%;
 
-    linear-gradient(
-      90deg,
-      transparent,
-      #1765ff,
-      #6edfff,
-      #fff
-    );
+  transform:
+    translate(-50%, -50%)
+    rotate(-10deg);
 
-  clip-path:
-    polygon(
-      0 50%,
-      70% 0,
-      100% 50%,
-      70% 100%
-    );
+  border:
+    1px solid
+    rgba(120,170,255,.2);
 
-  filter:blur(4px);
+  border-radius: 50%;
+
+  z-index: 1;
+}
+
+
+/* =========================
+   ROCKET CONTAINER
+========================= */
+
+#rockets {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 20;
+
+}
+
+
+/* =========================
+   BIG ROCKET
+========================= */
+
+.rocket {
+
+  position: absolute;
+
+  width: 560px;
+  height: 260px;
+
+  display: flex;
+
+  align-items: center;
 
   animation:
-    enginePulse
-    .12s
-    infinite
-    alternate;
-}
 
-@keyframes enginePulse{
+    rocketFlight
+    var(--duration)
+    linear
+    infinite;
 
-  from{
-    transform:scaleX(.65);
-    opacity:.6;
-  }
+  filter:
 
-  to{
-    transform:scaleX(1.2);
-    opacity:1;
-  }
+    drop-shadow(
+      0 0 20px
+      rgba(80,160,255,.8)
+    );
+
 }
 
 
 /* =========================
-   FRONT
+   ROCKET BODY
 ========================= */
 
-.front{
+.body {
 
-  position:absolute;
+  position: relative;
 
-  right:-110px;
-  top:10px;
+  width: 400px;
+  height: 150px;
 
-  width:140px;
-  height:150px;
+  border-radius:
+
+    80px
+    35px
+    35px
+    80px;
 
   background:
 
     linear-gradient(
-      135deg,
-      #e9eef4,
-      #8998aa,
-      #354256
+      to bottom,
+      #ffffff 0%,
+      #dbe3f4 45%,
+      #8e9bb5 100%
+    );
+
+  border:
+
+    3px solid
+    rgba(255,255,255,.9);
+
+  box-shadow:
+
+    inset
+    0 -20px
+    30px
+    rgba(0,0,0,.25),
+
+    0 0 30px
+    rgba(100,160,255,.4);
+
+}
+
+
+/* =========================
+   NOSE
+========================= */
+
+.nose {
+
+  position: absolute;
+
+  right: -75px;
+
+  top: 0;
+
+  width: 100px;
+
+  height: 150px;
+
+  background:
+
+    linear-gradient(
+      to right,
+      #dce7ff,
+      #ffffff
     );
 
   clip-path:
+
     polygon(
       0 0,
       100% 50%,
@@ -574,153 +298,380 @@ html,body{
 
 
 /* =========================
-   FRONT LIGHT
+   BIG PHOTO WINDOW
 ========================= */
 
-.frontLight{
+.photoWindow {
 
-  position:absolute;
+  position: absolute;
 
-  right:-115px;
-  top:67px;
+  left: 95px;
 
-  width:16px;
-  height:30px;
+  top: 25px;
 
-  border-radius:50%;
+  width: 190px;
 
-  background:#7ee4ff;
+  height: 100px;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  background: #030713;
+
+  border:
+
+    6px solid
+    #182343;
 
   box-shadow:
-    0 0 15px #65d5ff,
-    0 0 35px #3d8cff;
+
+    0 0 20px
+    rgba(80,170,255,.9),
+
+    inset 0 0 15px
+    rgba(0,0,0,.7);
+
 }
 
 
-/* =========================
-   FLIGHT
-========================= */
+.photoWindow img {
 
-@keyframes fly{
+  width: 100%;
 
-  0%{
+  height: 100%;
 
-    transform:
-      translate(
-        -800px,
-        var(--y1)
-      )
-      rotate(-4deg)
-      scale(.85);
+  object-fit: cover;
 
-  }
-
-  25%{
-
-    transform:
-      translate(
-        18vw,
-        var(--y2)
-      )
-      rotate(2deg)
-      scale(1);
-
-  }
-
-  50%{
-
-    transform:
-      translate(
-        45vw,
-        var(--y3)
-      )
-      rotate(-2deg)
-      scale(1.08);
-
-  }
-
-  75%{
-
-    transform:
-      translate(
-        72vw,
-        var(--y2)
-      )
-      rotate(3deg)
-      scale(1);
-
-  }
-
-  100%{
-
-    transform:
-      translate(
-        calc(100vw + 800px),
-        var(--y1)
-      )
-      rotate(-3deg)
-      scale(.85);
-
-  }
+  display: block;
 
 }
 
 
 /* =========================
-   BOTTOM
+   PHOTO LABEL
 ========================= */
 
-.mission{
+.photoLabel {
 
-  position:absolute;
+  position: absolute;
 
-  bottom:22px;
+  left: 95px;
 
-  left:50%;
+  top: 130px;
+
+  width: 190px;
+
+  text-align: center;
+
+  color: #1b2c54;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  letter-spacing: 2px;
+
+}
+
+
+/* =========================
+   WINGS
+========================= */
+
+.wing {
+
+  position: absolute;
+
+  width: 95px;
+
+  height: 80px;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #667799,
+      #182441
+    );
+
+}
+
+
+.wing.top {
+
+  left: 45px;
+
+  top: -65px;
+
+  clip-path:
+
+    polygon(
+      0 100%,
+      100% 100%,
+      40% 0
+    );
+
+}
+
+
+.wing.bottom {
+
+  left: 45px;
+
+  bottom: -65px;
+
+  clip-path:
+
+    polygon(
+      0 0,
+      100% 0,
+      40% 100%
+    );
+
+}
+
+
+/* =========================
+   ENGINE
+========================= */
+
+.engine {
+
+  position: absolute;
+
+  left: -35px;
+
+  top: 42px;
+
+  width: 55px;
+
+  height: 65px;
+
+  background:
+
+    linear-gradient(
+      to right,
+      #141b31,
+      #3b4a6c
+    );
+
+  border-radius: 15px;
+
+}
+
+
+/* =========================
+   FLAME
+========================= */
+
+.flame {
+
+  position: absolute;
+
+  left: -180px;
+
+  top: 35px;
+
+  width: 180px;
+
+  height: 80px;
+
+  background:
+
+    linear-gradient(
+      to left,
+      #ffffff,
+      #65dfff,
+      #397aff,
+      transparent
+    );
+
+  clip-path:
+
+    polygon(
+      100% 50%,
+      65% 10%,
+      0 50%,
+      65% 90%
+    );
+
+  animation:
+
+    flame
+    .15s
+    infinite
+    alternate;
+
+}
+
+
+@keyframes flame {
+
+  from {
+
+    transform:
+      scaleX(.65);
+
+    opacity: .7;
+
+  }
+
+  to {
+
+    transform:
+      scaleX(1.15);
+
+    opacity: 1;
+
+  }
+
+}
+
+
+/* =========================
+   ROCKET FLIGHT
+========================= */
+
+@keyframes rocketFlight {
+
+  0% {
+
+    transform:
+
+      translateX(-650px)
+
+      translateY(
+        var(--startY)
+      )
+
+      rotate(-4deg);
+
+  }
+
+  25% {
+
+    transform:
+
+      translateX(20vw)
+
+      translateY(
+        var(--midY)
+      )
+
+      rotate(3deg);
+
+  }
+
+  50% {
+
+    transform:
+
+      translateX(45vw)
+
+      translateY(
+        var(--endY)
+      )
+
+      rotate(-3deg);
+
+  }
+
+  75% {
+
+    transform:
+
+      translateX(70vw)
+
+      translateY(
+        var(--midY)
+      )
+
+      rotate(3deg);
+
+  }
+
+  100% {
+
+    transform:
+
+      translateX(
+        calc(100vw + 650px)
+      )
+
+      translateY(
+        var(--startY)
+      )
+
+      rotate(-3deg);
+
+  }
+
+}
+
+
+/* =========================
+   MISSION
+========================= */
+
+.mission {
+
+  position: absolute;
+
+  bottom: 25px;
+
+  left: 50%;
 
   transform:
     translateX(-50%);
 
-  color:#9bb4ff;
+  color: #9ab0ff;
 
-  font-size:12px;
+  font-size: 12px;
 
-  letter-spacing:4px;
+  letter-spacing: 4px;
 
-  z-index:100;
+  white-space: nowrap;
 
-  white-space:nowrap;
+  z-index: 100;
+
 }
 
 
 /* =========================
-   UPLOAD
+   UPLOAD BUTTON
 ========================= */
 
-.upload{
+.upload {
 
-  position:absolute;
+  position: absolute;
 
-  right:25px;
-  bottom:18px;
+  right: 25px;
+
+  bottom: 20px;
 
   padding:
-    13px 22px;
+    14px 25px;
 
-  border-radius:30px;
+  border-radius: 30px;
 
   background:
-    rgba(35,85,200,.9);
 
-  color:#fff;
+    rgba(40,90,210,.85);
 
-  text-decoration:none;
+  color: white;
 
-  z-index:100;
+  text-decoration: none;
+
+  font-size: 15px;
+
+  z-index: 100;
 
   box-shadow:
-    0 0 20px
-    rgba(50,120,255,.5);
+
+    0 0 25px
+    rgba(50,120,255,.6);
+
 }
 
 </style>
@@ -732,22 +683,27 @@ html,body{
 <div id="space">
 
   <div class="title">
-    SPACE PHOTO
+    SPACE ROCKET
   </div>
 
   <div class="subtitle">
-    EVERY PHOTO • A NEW SPACE MISSION
+    DIGITAL SPACE PHOTO MISSION
   </div>
+
 
   <div class="orbit"></div>
 
+
   <div class="earth"></div>
 
-  <div id="ships"></div>
+
+  <div id="rockets"></div>
+
 
   <div class="mission">
-    🛰️ SPACE EXPLORATION MISSION
+    EVERY PHOTO • A NEW SPACE MISSION
   </div>
+
 
   <a
     class="upload"
@@ -761,8 +717,9 @@ html,body{
 
 <script>
 
+
 /* =========================
-   STARS
+   CREATE STARS
 ========================= */
 
 const space =
@@ -770,45 +727,62 @@ const space =
     "space"
   );
 
-for(let i=0;i<300;i++){
+
+for (
+  let i = 0;
+  i < 250;
+  i++
+) {
 
   const star =
     document.createElement(
       "div"
     );
 
-  star.className="star";
+  star.className =
+    "star";
+
 
   const size =
-    Math.random()*3+1;
+    Math.random() * 3 + 1;
 
-  star.style.width=
-    size+"px";
 
-  star.style.height=
-    size+"px";
+  star.style.width =
+    size + "px";
 
-  star.style.left=
-    Math.random()*100+"%";
 
-  star.style.top=
-    Math.random()*100+"%";
+  star.style.height =
+    size + "px";
 
-  star.style.opacity=
+
+  star.style.left =
+    Math.random() * 100 + "%";
+
+
+  star.style.top =
+    Math.random() * 100 + "%";
+
+
+  star.style.opacity =
     Math.random();
 
-  space.appendChild(star);
+
+  space.appendChild(
+    star
+  );
+
 }
 
 
 /* =========================
-   SHIPS
+   ROCKET SYSTEM
 ========================= */
 
-const ships =
+const rockets =
   document.getElementById(
-    "ships"
+    "rockets"
   );
+
 
 const shown =
   new Set();
@@ -818,42 +792,49 @@ const shown =
    LOAD PHOTOS
 ========================= */
 
-async function loadPhotos(){
+async function loadPhotos() {
 
-  try{
+  try {
 
     const response =
       await fetch(
         "/api/photos"
       );
 
+
     const photos =
       await response.json();
 
 
     photos.forEach(
-      photo=>{
+      photo => {
 
-        if(
+        if (
           shown.has(
             photo.id
           )
-        ){
+        ) {
+
           return;
+
         }
+
 
         shown.add(
           photo.id
         );
 
-        createShip(
+
+        createRocket(
           photo
         );
 
       }
     );
 
-  }catch(error){
+  }
+
+  catch (error) {
 
     console.log(
       "Photo loading error",
@@ -861,28 +842,125 @@ async function loadPhotos(){
     );
 
   }
+
 }
 
 
 /* =========================
-   CREATE SHIP
+   CREATE ROCKET
 ========================= */
 
-function createShip(photo){
+function createRocket(
+  photo
+) {
 
-  const ship =
+  const rocket =
     document.createElement(
       "div"
     );
 
-  ship.className="ship";
+
+  rocket.className =
+    "rocket";
 
 
-  ship.style.setProperty(
-    "--speed",
-    (18+Math.random()*10)+"s"
+  /* ความเร็ว */
+
+  const duration =
+    18 +
+    Math.random() * 10;
+
+
+  rocket.style.setProperty(
+    "--duration",
+    duration + "s"
   );
 
 
-  ship.style.setProperty(
-    "--y1",
+  /* เส้นทาง */
+
+  rocket.style.setProperty(
+
+    "--startY",
+
+    (
+      8 +
+      Math.random() * 75
+    ) + "vh"
+
+  );
+
+
+  rocket.style.setProperty(
+
+    "--midY",
+
+    (
+      10 +
+      Math.random() * 70
+    ) + "vh"
+
+  );
+
+
+  rocket.style.setProperty(
+
+    "--endY",
+
+    (
+      8 +
+      Math.random() * 75
+    ) + "vh"
+
+  );
+
+
+  rocket.innerHTML = `
+
+    <div class="flame"></div>
+
+    <div class="body">
+
+      <div class="engine"></div>
+
+      <div class="wing top"></div>
+
+      <div class="wing bottom"></div>
+
+      <div class="photoWindow">
+
+        <img
+          src="${photo.data}"
+          alt="Space Photo"
+        >
+
+      </div>
+
+      <div class="photoLabel">
+        SPACE MISSION
+      </div>
+
+      <div class="nose"></div>
+
+    </div>
+
+  `;
+
+
+  rockets.appendChild(
+    rocket
+  );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+loadPhotos();
+
+
+/* =========================
+   CHECK NEW PHOTOS
+=================
