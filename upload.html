@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Upload Photo</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at center, #10152b 0%, #03040c 55%, #000 100%);
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .box {
+      width: 90%;
+      max-width: 500px;
+      padding: 35px 25px;
+      border: 1px solid rgba(130,160,255,.35);
+      border-radius: 25px;
+      background: rgba(10,15,40,.75);
+      box-shadow: 0 0 50px rgba(60,100,255,.2);
+    }
+
+    h1 {
+      font-size: 30px;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #9db4ff;
+    }
+
+    input {
+      display: none;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 16px 30px;
+      border-radius: 30px;
+      background: #3159d9;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(50,100,255,.5);
+    }
+
+    .button:active {
+      transform: scale(.96);
+    }
+
+    #preview {
+      display: none;
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      margin-top: 25px;
+      border-radius: 15px;
+    }
+
+    #status {
+      margin-top: 20px;
+      color: #8fa9ff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <h1>🚀 SPACE PHOTO</h1>
+
+    <p>
+      ส่งภาพของคุณเข้าสู่ภารกิจอวกาศ
+    </p>
+
+    <label class="button" for="photo">
+      📸 เลือกรูปภาพ
+    </label>
+
+    <input
+      id="photo"
+      type="file"
+      accept="image/*"
+    >
+
+    <img id="preview">
+
+    <div id="status"></div>
+
+  </div>
+
+<script>
+
+const photo = document.getElementById("photo");
+const preview = document.getElementById("preview");
+const status = document.getElementById("status");
+
+photo.addEventListener("change", function () {
+
+  const file = this.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+
+    preview.src = event.target.result;
+
+    preview.style.display = "block";
+
+    status.textContent =
+      "✅ เตรียมภาพสำหรับภารกิจอวกาศแล้ว";
+
+  };
+
+  reader.readAsDataURL(file);
+
+});
+
+</script>
+
+</body>
+</html>
