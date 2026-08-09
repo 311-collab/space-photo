@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SPACE PHOTO MISSION</title>
+
 <style>
 *{box-sizing:border-box}
+
 html,body{
   margin:0;
   width:100%;
@@ -14,6 +16,7 @@ html,body{
   background:#000;
   font-family:Arial,sans-serif;
 }
+
 #space{
   position:relative;
   width:100vw;
@@ -26,6 +29,7 @@ html,body{
     #02030b 75%,
     #000 100%);
 }
+
 .star{
   position:absolute;
   width:2px;
@@ -34,6 +38,7 @@ html,body{
   background:white;
   z-index:1;
 }
+
 .earth{
   position:absolute;
   width:230px;
@@ -54,6 +59,7 @@ html,body{
     0 0 100px rgba(50,110,255,.35);
   z-index:2;
 }
+
 .orbit{
   position:absolute;
   width:90vw;
@@ -65,349 +71,508 @@ html,body{
   border-radius:50%;
   z-index:1;
 }
+
 #ships{
   position:absolute;
   inset:0;
   z-index:20;
 }
-/* ยานใหญ่ขึ้น */
+
+/* ================= ยาน ================= */
+
 .ship{
   position:absolute;
-  width:420px;
-  height:230px;
+  width:460px;
+  height:260px;
   pointer-events:none;
   animation:fly var(--speed) linear forwards;
-  filter:drop-shadow(0 0 18px var(--glow));
+  filter:drop-shadow(0 0 20px var(--glow));
 }
+
 @keyframes fly{
   0%{
     transform:
-      translate(-470px,var(--y1))
+      translate(-520px,var(--y1))
       rotate(var(--angle))
       scale(var(--scale));
   }
+
   50%{
     transform:
       translate(50vw,var(--y2))
       rotate(calc(var(--angle) * -1))
       scale(var(--scale));
   }
+
   100%{
     transform:
-      translate(calc(100vw + 470px),var(--y3))
+      translate(calc(100vw + 520px),var(--y3))
       rotate(var(--angle))
       scale(var(--scale));
   }
 }
+
 /* ================= UFO ================= */
+
 .ufo{
   position:absolute;
-  left:25px;
-  top:70px;
-  width:360px;
-  height:120px;
+  left:35px;
+  top:75px;
+  width:390px;
+  height:125px;
   border-radius:50%;
+
   background:
-    linear-gradient(180deg,
-    var(--top),
-    var(--mid) 45%,
-    var(--bottom));
-  border:3px solid rgba(255,255,255,.8);
+    linear-gradient(
+      180deg,
+      var(--top),
+      var(--mid) 45%,
+      var(--bottom)
+    );
+
+  border:3px solid rgba(255,255,255,.85);
+
   box-shadow:
-    inset 0 15px 25px rgba(255,255,255,.35),
-    inset 0 -20px 25px rgba(0,0,0,.7),
-    0 0 35px var(--glow);
+    inset 0 15px 28px rgba(255,255,255,.35),
+    inset 0 -25px 30px rgba(0,0,0,.7),
+    0 0 40px var(--glow);
 }
+
 .ufo:before{
   content:"";
   position:absolute;
-  left:-10px;
-  top:45px;
-  width:380px;
-  height:65px;
+  left:-12px;
+  top:48px;
+  width:414px;
+  height:70px;
   border-radius:50%;
   border:5px solid var(--rim);
-  box-shadow:0 0 20px var(--glow);
+  box-shadow:
+    0 0 25px var(--glow);
 }
-/* หน้าต่างใหญ่ */
+
+/* โดม */
 .dome{
   position:absolute;
-  left:115px;
-  top:-8px;
-  width:130px;
-  height:90px;
+  left:125px;
+  top:-10px;
+  width:140px;
+  height:100px;
   overflow:hidden;
   border-radius:50% 50% 45% 45%;
+
   background:#123d68;
+
   border:4px solid #203752;
-  box-shadow:0 0 25px var(--glow);
+
+  box-shadow:
+    0 0 30px var(--glow);
+
   z-index:5;
 }
+
 .dome img{
   width:100%;
   height:100%;
   object-fit:cover;
   display:block;
 }
+
 .dome:after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(135deg,
-    rgba(255,255,255,.45),
-    transparent 45%);
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.5),
+      transparent 45%
+    );
+  pointer-events:none;
 }
+
+/* ไฟ */
 .light{
   position:absolute;
-  top:103px;
-  width:20px;
-  height:20px;
+  top:108px;
+  width:22px;
+  height:22px;
   border-radius:50%;
   background:var(--light);
+
   box-shadow:
     0 0 12px var(--light),
-    0 0 30px var(--light);
+    0 0 30px var(--light),
+    0 0 45px var(--light);
+
   animation:blink .45s infinite alternate;
 }
+
 .light1{left:45px}
-.light2{left:125px}
-.light3{left:205px}
-.light4{left:285px}
+.light2{left:135px}
+.light3{left:225px}
+.light4{left:315px}
+
 @keyframes blink{
   from{opacity:.3}
   to{opacity:1}
 }
-/* ================= จรวดแบบไม่มีหาง ================= */
+
+/* ================= จรวด ================= */
+
 .rocket{
   position:absolute;
-  left:120px;
+  left:160px;
   top:45px;
-  width:100px;
-  height:170px;
+  width:105px;
+  height:180px;
+
   transform:rotate(90deg);
+
   border-radius:50% 50% 35% 35%;
+
   background:
-    linear-gradient(90deg,
-    #202936,
-    #e8edf3 35%,
-    #7b8795 70%,
-    #1b2430);
+    linear-gradient(
+      90deg,
+      #202936,
+      #f1f4f7 35%,
+      #7b8795 70%,
+      #1b2430
+    );
+
   border:3px solid rgba(255,255,255,.8);
-  box-shadow:0 0 25px var(--glow);
+
+  box-shadow:
+    0 0 28px var(--glow);
 }
+
 .rocket:before{
   content:"";
   position:absolute;
   left:0;
-  top:-40px;
-  width:100px;
-  height:60px;
+  top:-42px;
+  width:105px;
+  height:62px;
+
   border-radius:50% 50% 10% 10%;
+
   background:
-    linear-gradient(90deg,
-    #303a47,
-    #f2f5f8,
-    #303a47);
+    linear-gradient(
+      90deg,
+      #303a47,
+      #f2f5f8,
+      #303a47
+    );
 }
+
 .rocket-window{
   position:absolute;
-  left:23px;
-  top:45px;
-  width:55px;
-  height:55px;
+  left:24px;
+  top:47px;
+  width:57px;
+  height:57px;
+
   border-radius:50%;
   overflow:hidden;
+
   border:4px solid #17283c;
+
   background:#123c65;
+
+  box-shadow:
+    0 0 15px var(--glow);
 }
+
 .rocket-window img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
+
 /* ================= ดาวเทียม ================= */
+
 .satellite{
   position:absolute;
-  left:120px;
-  top:75px;
-  width:170px;
-  height:90px;
-  background:linear-gradient(180deg,#aeb9c6,#465467);
+  left:140px;
+  top:85px;
+
+  width:180px;
+  height:95px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #c2ccd7,
+      #465467
+    );
+
   border-radius:12px;
+
   border:3px solid #d7e0e8;
-  box-shadow:0 0 25px var(--glow);
+
+  box-shadow:
+    0 0 28px var(--glow);
 }
+
 .panel{
   position:absolute;
   top:12px;
-  width:95px;
-  height:65px;
+  width:100px;
+  height:70px;
+
   background:
     repeating-linear-gradient(
       90deg,
       #173d72 0 12px,
-      #3264a2 12px 14px);
+      #3264a2 12px 14px
+    );
+
   border:2px solid #8ea8c5;
 }
-.panel.left{left:-105px}
-.panel.right{right:-105px}
+
+.panel.left{
+  left:-110px;
+}
+
+.panel.right{
+  right:-110px;
+}
+
 .satellite-camera{
   position:absolute;
-  left:55px;
-  top:20px;
-  width:60px;
-  height:50px;
+  left:58px;
+  top:21px;
+
+  width:64px;
+  height:52px;
+
   overflow:hidden;
   border-radius:8px;
+
   background:#101a27;
   border:3px solid #718094;
 }
+
 .satellite-camera img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
+
 /* ================= หัวเว็บ ================= */
+
 .title{
   position:absolute;
   top:18px;
   width:100%;
   text-align:center;
+
   color:white;
+
   font-size:clamp(22px,4vw,40px);
+
   font-weight:900;
+
   letter-spacing:6px;
+
   text-shadow:
     0 0 15px #64aaff,
     0 0 40px #2765dc;
+
   z-index:100;
 }
+
 .subtitle{
   position:absolute;
   top:64px;
   width:100%;
   text-align:center;
+
   color:#91aaff;
+
   font-size:11px;
   letter-spacing:4px;
+
   z-index:100;
 }
+
 .upload{
   position:absolute;
   right:20px;
   bottom:20px;
+
   padding:12px 20px;
+
   border-radius:25px;
+
   background:#315bd5;
+
   color:white;
+
   text-decoration:none;
+
   z-index:100;
-  box-shadow:0 0 20px rgba(50,120,255,.6);
+
+  box-shadow:
+    0 0 20px rgba(50,120,255,.6);
 }
+
 .mission{
   position:absolute;
   bottom:22px;
   left:50%;
+
   transform:translateX(-50%);
+
   color:#9db6ff;
+
   font-size:11px;
+
   letter-spacing:4px;
+
   z-index:100;
+
   white-space:nowrap;
 }
+
 </style>
 </head>
+
 <body>
+
 <div id="space">
-  <div class="title">SPACE PHOTO</div>
+
+  <div class="title">
+    SPACE PHOTO
+  </div>
+
   <div class="subtitle">
     SPACE PHOTO MISSION
   </div>
+
   <div class="orbit"></div>
+
   <div class="earth"></div>
+
   <div id="ships"></div>
+
   <div class="mission">
     🚀 🛸 🛰️ INFINITE SPACE MISSION
   </div>
-  <a class="upload" href="/upload.html">
+
+  <a
+    class="upload"
+    href="/upload.html"
+  >
     📸 UPLOAD PHOTO
   </a>
+
 </div>
+
 <script>
+
 /* ================= ดาว ================= */
-const space=document.getElementById("space");
+
+const space =
+  document.getElementById("space");
+
 for(let i=0;i<300;i++){
-  const star=document.createElement("div");
+
+  const star =
+    document.createElement("div");
+
   star.className="star";
-  const size=Math.random()*3+1;
+
+  const size =
+    Math.random()*3+1;
+
   star.style.width=size+"px";
   star.style.height=size+"px";
-  star.style.left=Math.random()*100+"%";
-  star.style.top=Math.random()*100+"%";
-  star.style.opacity=Math.random();
+
+  star.style.left =
+    Math.random()*100+"%";
+
+  star.style.top =
+    Math.random()*100+"%";
+
+  star.style.opacity =
+    Math.random();
+
   space.appendChild(star);
 }
+
+
 /* ================= ระบบรูป ================= */
-const ships=document.getElementById("ships");
+
+const ships =
+  document.getElementById("ships");
+
 let photos=[];
 let photoQueue=[];
+
+
 /*
-  ดึงรูปจาก API
+  โหลดเฉพาะ 10 รูปล่าสุด
 */
+
 async function loadPhotos(){
+
   try{
-    const response=await fetch(
-      "/api/photos?limit=10",
-      {cache:"no-store"}
-    );
+
+    const response =
+      await fetch(
+        "/api/photos?limit=10",
+        {
+          cache:"no-store"
+        }
+      );
+
     if(!response.ok){
-      console.log("API ERROR",response.status);
+      console.log(
+        "โหลดรูปไม่ได้:",
+        response.status
+      );
       return;
     }
-    const data=await response.json();
+
+    const data =
+      await response.json();
+
     if(!Array.isArray(data)){
-      console.log("API ไม่ได้ส่ง Array");
       return;
     }
+
     /*
-      เอาแค่ 10 รูปล่าสุด
-      รองรับทั้งกรณี API เรียงใหม่สุดก่อน
-      และกรณีมี timestamp
+      เอา 10 รูปล่าสุด
     */
-    photos=data
-      .slice()
-      .sort((a,b)=>{
-        const ta=new Date(
-          a.createdAt ||
-          a.timestamp ||
-          a.date ||
-          0
-        ).getTime();
-        const tb=new Date(
-          b.createdAt ||
-          b.timestamp ||
-          b.date ||
-          0
-        ).getTime();
-        return tb-ta;
-      })
-      .slice(0,10);
+
+    photos =
+      data.slice(0,10);
+
     rebuildQueue();
+
     console.log(
-      "รูปที่ใช้งาน:",
+      "รูปที่ใช้:",
       photos.length
     );
+
   }catch(error){
-    console.error(
-      "โหลดรูปไม่ได้:",
+
+    console.log(
+      "Photo API Error",
       error
     );
+
   }
 }
-/* ================= หา ID รูป ================= */
+
+
+/* ================= ID รูป ================= */
+
 function photoID(photo,index){
+
   return String(
+
     photo.id ??
     photo._id ??
     photo.filename ??
@@ -415,14 +580,17 @@ function photoID(photo,index){
     photo.url ??
     photo.data ??
     index
+
   );
+
 }
-/* ================= หาที่อยู่รูป ================= */
+
+
+/* ================= URL รูป ================= */
+
 function getImage(photo){
-  /*
-    รองรับชื่อ field หลายแบบ
-  */
-  let image=
+
+  let image =
     photo.data ||
     photo.url ||
     photo.image ||
@@ -432,43 +600,82 @@ function getImage(photo){
     photo.imageUrl ||
     photo.photo ||
     "";
-  /*
-    ถ้าเป็น object
-  */
-  if(typeof image==="object" && image){
-    image=
+
+  if(
+    typeof image === "object" &&
+    image
+  ){
+
+    image =
       image.url ||
       image.path ||
       image.src ||
       image.data ||
       "";
+
   }
+
   return image;
+
 }
+
+
 /* ================= สร้างคิว ================= */
+
 function rebuildQueue(){
-  const active=new Set(
-    [...document.querySelectorAll(".ship")]
-      .map(x=>x.dataset.photoId)
-  );
-  const queued=new Set(photoQueue);
+
+  const active =
+    new Set(
+      [
+        ...document.querySelectorAll(".ship")
+      ].map(
+        ship =>
+          ship.dataset.photoId
+      )
+    );
+
+  const queued =
+    new Set(photoQueue);
+
   const available=[];
-  photos.forEach((photo,index)=>{
-    const id=photoID(photo,index);
-    if(
-      !active.has(id) &&
-      !queued.has(id)
-    ){
-      available.push(id);
+
+  photos.forEach(
+    (photo,index)=>{
+
+      const id =
+        photoID(photo,index);
+
+      if(
+        !active.has(id) &&
+        !queued.has(id)
+      ){
+
+        available.push(id);
+
+      }
+
     }
-  });
+  );
+
+  /*
+    สุ่มลำดับ
+  */
+
   available.sort(
     ()=>Math.random()-.5
   );
-  photoQueue.push(...available);
+
+  photoQueue.push(
+    ...available
+  );
+
 }
-/* ================= สี ================= */
+
+
+/* ================= สี UFO ================= */
+
 const colors=[
+
   {
     top:"#eef4fa",
     mid:"#aab8c7",
@@ -477,6 +684,7 @@ const colors=[
     light:"#5de8ff",
     glow:"rgba(40,200,255,.9)"
   },
+
   {
     top:"#ffffff",
     mid:"#b7a9c8",
@@ -485,6 +693,7 @@ const colors=[
     light:"#f06cff",
     glow:"rgba(210,70,255,.9)"
   },
+
   {
     top:"#f4fff4",
     mid:"#a6c4aa",
@@ -493,6 +702,7 @@ const colors=[
     light:"#66ff88",
     glow:"rgba(70,255,100,.9)"
   },
+
   {
     top:"#fff5dc",
     mid:"#c7a77d",
@@ -501,6 +711,7 @@ const colors=[
     light:"#ffd15c",
     glow:"rgba(255,170,40,.9)"
   },
+
   {
     top:"#f4f4ff",
     mid:"#8f9fc4",
@@ -509,17 +720,12 @@ const colors=[
     light:"#739aff",
     glow:"rgba(80,120,255,.9)"
   }
+
 ];
-/* ================= ค้นหารูป ================= */
+
+
+/* ================= หารูป ================= */
+
 function findPhoto(id){
-  return photos.find(
-    (photo,index)=>
-      photoID(photo,index)===id
-  );
-}
-/* ================= สร้างยาน ================= */
-function createShip(){
-  /*
-    ถ้าคิวหมด
-    สร้างคิวใหม่จาก 10 รูป
-  */
+
+  return photos
